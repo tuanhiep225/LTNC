@@ -1,5 +1,5 @@
 package mta.th12a.tuanhiep.controller;
 
-public class CategoriesController {
+public class ProductStoresController {
 
 }
