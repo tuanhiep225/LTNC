@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mta.th12a.tuanhiep.dao.IProductsStoresDao;
-import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.entity.ProductStores;
 import mta.th12a.tuanhiep.service.IProductsStoresService;
 @Service
 public class ProductsStoresServiceImpl implements IProductsStoresService {

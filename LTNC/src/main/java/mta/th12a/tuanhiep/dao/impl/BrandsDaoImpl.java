@@ -3,7 +3,7 @@ package mta.th12a.tuanhiep.dao.impl;
 import java.util.List;
 
 import mta.th12a.tuanhiep.dao.IBrandsDao;
-import mta.th12a.tuanhiep.model.Brands;
+import mta.th12a.tuanhiep.entity.Brands;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,8 +3,9 @@ package mta.th12a.tuanhiep.rest;
 import java.io.IOException;
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Customers;
+import mta.th12a.tuanhiep.entity.Customers;
 import mta.th12a.tuanhiep.service.ICustomersService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;

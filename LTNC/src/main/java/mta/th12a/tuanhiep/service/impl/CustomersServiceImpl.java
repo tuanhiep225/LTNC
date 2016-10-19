@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mta.th12a.tuanhiep.dao.ICustomersDao;
-import mta.th12a.tuanhiep.model.Customers;
+import mta.th12a.tuanhiep.entity.Customers;
 import mta.th12a.tuanhiep.service.ICustomersService;
 
 @Service

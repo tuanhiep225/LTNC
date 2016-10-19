@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import mta.th12a.tuanhiep.dao.IProductCorlorsDao;
-import mta.th12a.tuanhiep.model.ProductColors;
+import mta.th12a.tuanhiep.entity.ProductColors;
 import mta.th12a.tuanhiep.service.IProductCorlorsService;
 
 @Service

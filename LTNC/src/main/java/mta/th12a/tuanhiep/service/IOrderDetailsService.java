@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.service;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.OrderDetails;
+import mta.th12a.tuanhiep.entity.OrderDetails;
 
 public interface IOrderDetailsService {
 	public void add(OrderDetails entity);

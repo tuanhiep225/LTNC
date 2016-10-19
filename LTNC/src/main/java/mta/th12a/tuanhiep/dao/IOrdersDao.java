@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.dao;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Orders;
+import mta.th12a.tuanhiep.entity.Orders;
 
 public interface IOrdersDao {
 	public void add(Orders entity);

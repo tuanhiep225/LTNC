@@ -8,8 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 
+
 import mta.th12a.tuanhiep.dao.IProductImagesDao;
-import mta.th12a.tuanhiep.model.ProductImages;
+import mta.th12a.tuanhiep.entity.ProductImages;
 import mta.th12a.tuanhiep.service.IProductImagesService;
 @Service
 public class ProductImagesServiceImpl implements IProductImagesService {

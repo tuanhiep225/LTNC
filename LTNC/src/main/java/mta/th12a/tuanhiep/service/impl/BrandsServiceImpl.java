@@ -3,8 +3,9 @@ package mta.th12a.tuanhiep.service.impl;
 import java.util.List;
 
 import mta.th12a.tuanhiep.dao.IBrandsDao;
-import mta.th12a.tuanhiep.model.Brands;
+import mta.th12a.tuanhiep.entity.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

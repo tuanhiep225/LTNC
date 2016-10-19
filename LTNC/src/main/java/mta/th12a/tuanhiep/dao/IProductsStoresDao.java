@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.dao;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.entity.ProductStores;
 
 public interface IProductsStoresDao {
 	public void add(ProductStores entity);

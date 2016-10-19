@@ -3,7 +3,7 @@ package mta.th12a.tuanhiep.rest;
 import java.io.IOException;
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Brands;
+import mta.th12a.tuanhiep.entity.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
 
 import org.springframework.beans.factory.annotation.Autowired;

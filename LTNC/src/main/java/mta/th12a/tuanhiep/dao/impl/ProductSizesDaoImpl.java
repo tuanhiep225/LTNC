@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IProductSizesDao;
-import mta.th12a.tuanhiep.model.ProductSizes;
+import mta.th12a.tuanhiep.entity.ProductSizes;
 @Repository
 public class ProductSizesDaoImpl implements IProductSizesDao {
 	@Autowired

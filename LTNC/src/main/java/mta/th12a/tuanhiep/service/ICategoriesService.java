@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.service;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Categories;
+import mta.th12a.tuanhiep.entity.Categories;
 
 public interface ICategoriesService {
 	public void add(Categories category);

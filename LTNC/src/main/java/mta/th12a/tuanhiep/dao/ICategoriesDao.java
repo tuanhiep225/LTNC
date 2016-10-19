@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.dao;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Categories;
+import mta.th12a.tuanhiep.entity.Categories;
 
 public interface ICategoriesDao {
 	public void add(Categories category);

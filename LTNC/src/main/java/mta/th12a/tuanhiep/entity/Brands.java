@@ -1,4 +1,4 @@
-package mta.th12a.tuanhiep.model;
+package mta.th12a.tuanhiep.entity;
 
 
 // Generated Oct 10, 2016 7:18:39 PM by Hibernate Tools 4.3.1

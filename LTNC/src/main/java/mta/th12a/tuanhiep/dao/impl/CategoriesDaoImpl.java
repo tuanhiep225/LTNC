@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.ICategoriesDao;
-import mta.th12a.tuanhiep.model.Categories;
+import mta.th12a.tuanhiep.entity.Categories;
 @Repository
 public class CategoriesDaoImpl implements ICategoriesDao{
 	@Autowired

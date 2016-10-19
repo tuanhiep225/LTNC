@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IProductCorlorsDao;
-import mta.th12a.tuanhiep.model.ProductColors;
+import mta.th12a.tuanhiep.entity.ProductColors;
 @Repository
 public class ProductCorlorsDaoImpl implements IProductCorlorsDao {
 	@Autowired

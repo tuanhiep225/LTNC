@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.ICustomersDao;
-import mta.th12a.tuanhiep.model.Customers;
+import mta.th12a.tuanhiep.entity.Customers;
 @Repository
 public class CustomersDaoImpl implements ICustomersDao{
 	@Autowired

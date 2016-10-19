@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.service;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.ProductColors;
+import mta.th12a.tuanhiep.entity.ProductColors;
 
 public interface IProductCorlorsService {
 	public void add(ProductColors entity);

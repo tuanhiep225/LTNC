@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import mta.th12a.tuanhiep.dao.IOrdersDao;
-import mta.th12a.tuanhiep.model.Orders;
+import mta.th12a.tuanhiep.entity.Orders;
 import mta.th12a.tuanhiep.service.IOrdersService;
 
 @Service

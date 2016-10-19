@@ -2,7 +2,7 @@ package mta.th12a.tuanhiep.service;
 
 import java.util.List;
 
-import mta.th12a.tuanhiep.model.Brands;
+import mta.th12a.tuanhiep.entity.Brands;
 
 
 public interface IBrandsService {

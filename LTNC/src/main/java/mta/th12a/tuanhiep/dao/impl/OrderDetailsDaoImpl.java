@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IOrderDetailsDao;
-import mta.th12a.tuanhiep.model.OrderDetails;
+import mta.th12a.tuanhiep.entity.OrderDetails;
 @Repository
 public class OrderDetailsDaoImpl implements IOrderDetailsDao{
 	@Autowired
