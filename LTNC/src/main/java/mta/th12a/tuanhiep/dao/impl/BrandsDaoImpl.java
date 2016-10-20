@@ -4,7 +4,6 @@ import java.util.List;
 
 import mta.th12a.tuanhiep.dao.IBrandsDao;
 import mta.th12a.tuanhiep.model.Brands;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

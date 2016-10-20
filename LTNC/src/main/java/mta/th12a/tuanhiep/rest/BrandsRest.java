@@ -82,4 +82,9 @@ public class BrandsRest {
 		}
 		return 0;
 	}
+	@RequestMapping(value="/brands/getall")
+	public String getAll1()
+	{
+		return "xinchao";
+	}
 }

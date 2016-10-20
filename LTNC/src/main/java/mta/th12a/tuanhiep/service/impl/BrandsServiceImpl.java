@@ -18,7 +18,6 @@ public class BrandsServiceImpl implements IBrandsService {
 	@Override
 	public void add(Brands brand) {
 		brandDao.add(brand);
-		
 	}
 	@Transactional
 	@Override
