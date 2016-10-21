@@ -51,6 +51,7 @@
 	    <property name="suffix" value=".jsp"/>
 	</bean>
 	<mvc:view-controller path="/" view-name="index"/> <!-- Set trang mac dinh khi chay -->
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
 	<tx:annotation-driven />
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
