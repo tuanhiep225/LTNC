@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping(value="/brand")
 public class BrandsController {
-	@RequestMapping(value="/brand/index",method=RequestMethod.GET)
+	@RequestMapping(value="/index")
 	public String Index()
 	{
 		return "index";
