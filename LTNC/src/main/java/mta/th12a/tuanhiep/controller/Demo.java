@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/demo")
+@RequestMapping(value="/demo1")
 public class Demo {
 	@RequestMapping(value="/index")
 public String Index()
