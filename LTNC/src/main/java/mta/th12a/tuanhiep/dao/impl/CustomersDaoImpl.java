@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.ICustomersDao;
+import mta.th12a.tuanhiep.model.Categories;
 import mta.th12a.tuanhiep.model.Customers;
 @Repository
 public class CustomersDaoImpl implements ICustomersDao{
@@ -18,13 +19,15 @@ public class CustomersDaoImpl implements ICustomersDao{
 		
 	}@Override
 	public void delete(int id) {
-		sessionFactory.getCurrentSession().delete(getByID(id));
+		Customers entity=getByID(id);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<Customers> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from Customers").list();
+		return sessionFactory.getCurrentSession().createQuery("from Customers where IsActive=1").list();
 	}@Override
 	public Customers getByID(int id) {
 		

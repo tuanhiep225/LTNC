@@ -54,5 +54,6 @@ public class BrandsController {
 		brandService.delete(id);
 		model.put("listBrand", brandService.getAll());
 		return "redirect:/brand/index";
+
 	}
 }

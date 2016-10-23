@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.ICategoriesDao;
+import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.model.Categories;
 @Repository
 public class CategoriesDaoImpl implements ICategoriesDao{
@@ -18,12 +19,14 @@ public class CategoriesDaoImpl implements ICategoriesDao{
 		
 	}@Override
 	public void delete(int ID) {		
-		sessionFactory.getCurrentSession().delete(getByID(ID));
+		Categories entity=getByID(ID);
+		entity.setIsActive(false);
+		update(entity);
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<Categories> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from Categories").list();
+		return sessionFactory.getCurrentSession().createQuery("from Categories where IsActive=1").list();
 	}@Override
 	public Categories getByID(int ID) {
 		
