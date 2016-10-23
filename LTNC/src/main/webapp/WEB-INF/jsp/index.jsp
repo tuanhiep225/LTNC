@@ -58,8 +58,8 @@
                                         <span style="width:20px;" class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="${pageContext.request.contextPath}/brand/create">Sửa</a></li>
-                                        <li><a href="#">Xóa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/brand/update/${brand.brandId}">Sửa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/brand/delete/${brand.brandId}">Xóa</a></li>
                                     </ul>
                                 </div>
                             </td>

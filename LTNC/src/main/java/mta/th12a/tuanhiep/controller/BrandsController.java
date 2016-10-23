@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,15 +28,31 @@ public class BrandsController {
 		return new ModelAndView("brand_create","brand",new Brands());
 	}
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public ModelAndView Create(@ModelAttribute(value="brand")  Brands brand)
+	public String Create(@ModelAttribute(value="brand")  Brands brand,ModelMap model)
 	{
 		brand.setIsActive(true);
 		brandService.add(brand);
-		return new ModelAndView("index","listBrand",brandService.getAll());
+		model.put("listBrand", brandService.getAll());
+		return "redirect:/brand/index";
 	}
-	@RequestMapping(value="/ok")
-	public String OK()
+	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
+	public ModelAndView Update(@PathVariable(value="id") int id)
 	{
-		return "ok";
+		Brands brand=brandService.getByID(id);
+		return new ModelAndView("brand_update","brand",brand);
+	}
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String Update(@ModelAttribute(value="brand") Brands brand,ModelMap model)
+	{
+		brandService.update(brand);
+		model.put("listBrand", brandService.getAll());
+		return "redirect:/brand/index";
+	}
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+	public String Delete(@PathVariable(value="id") int id,ModelMap model)
+	{
+		brandService.delete(id);
+		model.put("listBrand", brandService.getAll());
+		return "redirect:/brand/index";
 	}
 }
