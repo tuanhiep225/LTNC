@@ -46,4 +46,11 @@ public class BrandsController {
 		brandService.update(brand);
 		return new ModelAndView("index","listBrand",brandService.getAll());
 	}
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+	public String Delete(@PathVariable(value="id") int id,ModelMap model)
+	{
+		brandService.delete(id);
+		model.put("listBrand", brandService.getAll());
+		return "/redirect:brand/index";
+	}
 }
