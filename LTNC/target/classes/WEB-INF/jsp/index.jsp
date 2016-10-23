@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <%@include file= "/WEB-INF/layout/_header.jsp"%>
@@ -15,7 +18,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="col-md-10 col-sm-10 col-xs-10">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Tuấn Hiệp</small></h2>
@@ -40,27 +43,14 @@
                     <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
                       <thead>
                         <tr>
-                          <th><input type="checkbox" id="check-all" class="flat"></th>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
+                          <th>Tên Hãng</th>
                           <th></th>
                         </tr>
                       </thead>
-
-
                       <tbody>
-                        <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
+                      <c:forEach items="${listBrand}" var="brand">
+                      <tr>
+                          <td>${brand.brandName }</td>
                              <td width="100px;">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -68,12 +58,14 @@
                                         <span style="width:20px;" class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Sửa</a></li>
-                                        <li><a href="#">Xóa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/brand/update/${brand.brandId}">Sửa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/brand/delete/${brand.brandId}">Xóa</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
+                      </c:forEach>
+                        
                         
                       </tbody>
                     </table>
@@ -82,7 +74,6 @@
             </div>
         </div>
         <!-- /page content -->
-
         <!-- footer content -->
         <%@include file= "/WEB-INF/layout/_footer.jsp"%>
         <!-- /footer content -->
