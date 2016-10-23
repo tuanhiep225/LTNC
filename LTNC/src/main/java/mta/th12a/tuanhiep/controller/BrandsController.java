@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,9 +34,16 @@ public class BrandsController {
 		brandService.add(brand);
 		return new ModelAndView("index","listBrand",brandService.getAll());
 	}
-	@RequestMapping(value="/ok")
-	public String OK()
+	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
+	public ModelAndView Update(@PathVariable(value="id") int id)
 	{
-		return "ok";
+		Brands brand=brandService.getByID(id);
+		return new ModelAndView("brand_update","brand",brand);
+	}
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public ModelAndView Update(@ModelAttribute(value="brand") Brands brand)
+	{
+		brandService.update(brand);
+		return new ModelAndView("index","listBrand",brandService.getAll());
 	}
 }
