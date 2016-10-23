@@ -19,12 +19,14 @@ public class BrandsDaoImpl implements IBrandsDao {
 		
 	}@Override
 	public void delete(int Brand_ID) {
-		sessionFactory.getCurrentSession().delete(getByID(Brand_ID));
+		Brands brand=getByID(Brand_ID);
+		brand.setIsActive(false);
+		update(brand);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<Brands> getAll() {		
-		return sessionFactory.getCurrentSession().createQuery("from Brands").list();
+		return sessionFactory.getCurrentSession().createQuery("from Brands where IsActive=1").list();
 	}@Override
 	public Brands getByID(int Brand_ID) {
 		
