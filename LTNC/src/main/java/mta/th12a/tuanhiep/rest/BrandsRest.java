@@ -19,16 +19,17 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
+@RequestMapping(value="/api/brand")
 public class BrandsRest {
 	@Autowired
 	private IBrandsService brandService;
-	@RequestMapping(value="/brand/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Brands> getAll()
 	{
 		return brandService.getAll();
 	}
 	
-	@RequestMapping(value="/brand/update",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/update",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
 	public int update(@RequestBody String data)
 	{
 		ObjectMapper obj= new ObjectMapper();
@@ -48,7 +49,7 @@ public class BrandsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/brand/create",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/create",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
 	public int create(@RequestBody String data)
 	{
 		ObjectMapper obj= new ObjectMapper();
@@ -68,7 +69,7 @@ public class BrandsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/brand/delete/{id}",method=RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
 	public int delete(@PathVariable("id") int data)
 	{
 		try{

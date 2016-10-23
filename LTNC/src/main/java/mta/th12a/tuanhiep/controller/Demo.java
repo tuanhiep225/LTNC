@@ -4,7 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/category")
-public class CategoriesController {
-
+@RequestMapping(value="/demo1")
+public class Demo {
+	@RequestMapping(value="/index")
+public String Index()
+{
+	return "index";
+}
 }

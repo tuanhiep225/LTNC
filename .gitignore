@@ -47,3 +47,7 @@ Temporary Items
 .apdisk
 LTNC/target/m2e-wtp/web-resources/META-INF/maven/LTNC/LTNC/pom.properties
 *.class
+LTNC/src/main/webapp/WEB-INF/jdbc.properties
+LTNC/target/classes/WEB-INF/jdbc.properties
+LTNC/target/m2e-wtp/web-resources/META-INF/maven/LTNC/LTNC/pom.properties
+LTNC/target/m2e-wtp/web-resources/META-INF/maven/LTNC/LTNC/pom.properties
