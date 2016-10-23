@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IProductImagesDao;
+import mta.th12a.tuanhiep.model.ProductColors;
 import mta.th12a.tuanhiep.model.ProductImages;
 @Repository
 public class ProductImagesDaoImpl implements IProductImagesDao {
@@ -18,13 +19,15 @@ public class ProductImagesDaoImpl implements IProductImagesDao {
 		
 	}@Override
 	public void delete(int id) {
-		sessionFactory.getCurrentSession().delete(getByID(id));
+		ProductImages entity=getByID(id);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductImages> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productimages").list();
+		return sessionFactory.getCurrentSession().createQuery("from productimages where IsActive=1").list();
 	}@Override
 	public ProductImages getByID(int id) {
 		

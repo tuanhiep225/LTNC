@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IOrdersDao;
+import mta.th12a.tuanhiep.model.OrderDetails;
 import mta.th12a.tuanhiep.model.Orders;
 @Repository
 public class OrdersDaoImpl implements IOrdersDao {
@@ -17,12 +18,14 @@ public class OrdersDaoImpl implements IOrdersDao {
 		
 	}@Override
 	public void delete(int id) {
-		sessionFactory.getCurrentSession().delete(getByID(id));
+		Orders entity=getByID(id);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<Orders> getAll() {		
-		return sessionFactory.getCurrentSession().createQuery("from Orders").list();
+		return sessionFactory.getCurrentSession().createQuery("from Orders where IsActive=1").list();
 	}@Override
 	public Orders getByID(int id) {
 		
