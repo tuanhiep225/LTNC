@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IProductSizesDao;
 import mta.th12a.tuanhiep.model.ProductSizes;
+import mta.th12a.tuanhiep.model.Products;
 @Repository
 public class ProductSizesDaoImpl implements IProductSizesDao {
 	@Autowired
@@ -18,13 +19,15 @@ public class ProductSizesDaoImpl implements IProductSizesDao {
 		
 	}@Override
 	public void delete(int id) {
-		sessionFactory.getCurrentSession().delete(getByID(id));
+		ProductSizes entity=getByID(id);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductSizes> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productsizes").list();
+		return sessionFactory.getCurrentSession().createQuery("from productsizes where IsActive=1").list();
 	}@Override
 	public ProductSizes getByID(int id) {
 		

@@ -19,9 +19,9 @@ public class BrandsDaoImpl implements IBrandsDao {
 		
 	}@Override
 	public void delete(int Brand_ID) {
-		Brands brand=getByID(Brand_ID);
-		brand.setIsActive(false);
-		update(brand);
+		Brands entity=getByID(Brand_ID);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
