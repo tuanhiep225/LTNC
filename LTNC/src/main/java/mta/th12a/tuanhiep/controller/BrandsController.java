@@ -2,10 +2,13 @@ package mta.th12a.tuanhiep.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
 
 @Controller
@@ -16,7 +19,23 @@ public class BrandsController {
 	@RequestMapping(value="/index")
 	public ModelAndView Index()
 	{
-		
 		return new ModelAndView("index","listBrand",brandService.getAll());
+	}
+	@RequestMapping(value="/create",method=RequestMethod.GET)
+	public ModelAndView Create()
+	{
+		return new ModelAndView("brand_create","brand",new Brands());
+	}
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	public ModelAndView Create(@ModelAttribute(value="brand")  Brands brand)
+	{
+		brand.setIsActive(true);
+		brandService.add(brand);
+		return new ModelAndView("index","listBrand",brandService.getAll());
+	}
+	@RequestMapping(value="/ok")
+	public String OK()
+	{
+		return "ok";
 	}
 }
