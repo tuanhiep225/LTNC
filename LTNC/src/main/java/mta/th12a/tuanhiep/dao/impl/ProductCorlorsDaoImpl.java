@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mta.th12a.tuanhiep.dao.IProductCorlorsDao;
+import mta.th12a.tuanhiep.model.Orders;
 import mta.th12a.tuanhiep.model.ProductColors;
 @Repository
 public class ProductCorlorsDaoImpl implements IProductCorlorsDao {
@@ -18,13 +19,15 @@ public class ProductCorlorsDaoImpl implements IProductCorlorsDao {
 		
 	}@Override
 	public void delete(int id) {
-		sessionFactory.getCurrentSession().delete(getByID(id));
+		ProductColors entity=getByID(id);
+		entity.setIsActive(false);
+		update(entity);
 		
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductColors> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productcolors").list();
+		return sessionFactory.getCurrentSession().createQuery("from productcolors where IsActive=1").list();
 	}@Override
 	public ProductColors getByID(int id) {
 		
