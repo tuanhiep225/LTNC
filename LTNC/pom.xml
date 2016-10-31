@@ -111,7 +111,13 @@
 	  <artifactId>java-core</artifactId>
 	  <version>2.6</version>
 	</dependency>
+	<dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-extras</artifactId>
+        <version>3.0.0</version>
+    </dependency>
 </dependencies>
+
   <build>
     <testSourceDirectory>src/main/test</testSourceDirectory>
     <resources>
