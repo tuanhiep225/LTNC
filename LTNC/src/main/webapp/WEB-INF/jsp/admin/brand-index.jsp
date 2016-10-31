@@ -33,7 +33,6 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-
                       <tbody>
                         <tr>
                           <td>Tiger Nixon</td>
