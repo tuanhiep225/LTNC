@@ -27,7 +27,7 @@ public class ProductCorlorsDaoImpl implements IProductCorlorsDao {
 	@Override
 	public List<ProductColors> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productcolors where IsActive=1").list();
+		return sessionFactory.getCurrentSession().createQuery("from ProductColors where IsActive=1").list();
 	}@Override
 	public ProductColors getByID(int id) {
 		

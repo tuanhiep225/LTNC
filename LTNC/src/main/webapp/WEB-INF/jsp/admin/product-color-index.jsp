@@ -9,7 +9,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Admin <small>Thương Hiệu</small></h2>
+                    <h2>Admin <small>Màu sắc sản phẩm</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -36,9 +36,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <c:forEach items="${listBrand}" var="brand">
+                      <c:forEach items="${listProductColor}" var="productColor">
                         <tr>
-                          <td>${brand.brandName }</td>
+                          <td>${productColor.productColorName}</td>
                           <td width="100px;">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -46,8 +46,8 @@
                                         <span style="width:20px;" class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="${pageContext.request.contextPath}/brand/update/${brand.brandId}">Sửa</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/brand/delete/${brand.brandId}">Xóa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/product-color/update/${productColor.productColorId}">Sửa</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/product-color/delete/${productColor.productColorId}">Xóa</a></li>
                                     </ul>
                                 </div>
                             </td>

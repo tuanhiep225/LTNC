@@ -20,12 +20,12 @@ public class BrandsController {
 	@RequestMapping(value="/index")
 	public ModelAndView Index()
 	{
-		return new ModelAndView("index","listBrand",brandService.getAll());
+		return new ModelAndView("brand-index","listBrand",brandService.getAll());
 	}
 	@RequestMapping(value="/create",method=RequestMethod.GET)
 	public ModelAndView Create()
 	{
-		return new ModelAndView("brand_create","brand",new Brands());
+		return new ModelAndView("brand-create","brand",new Brands());
 	}
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public String Create(@ModelAttribute(value="brand")  Brands brand,ModelMap model)
@@ -39,7 +39,7 @@ public class BrandsController {
 	public ModelAndView Update(@PathVariable(value="id") int id)
 	{
 		Brands brand=brandService.getByID(id);
-		return new ModelAndView("brand_update","brand",brand);
+		return new ModelAndView("brand-update","brand",brand);
 	}
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String Update(@ModelAttribute(value="brand") Brands brand,ModelMap model)
@@ -48,7 +48,7 @@ public class BrandsController {
 		model.put("listBrand", brandService.getAll());
 		return "redirect:/brand/index";
 	}
-	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.POST)
 	public String Delete(@PathVariable(value="id") int id,ModelMap model)
 	{
 		brandService.delete(id);

@@ -11,8 +11,34 @@
         
 	</definition>
 
-	<definition name="table" extends="admin-layout">
-	    <put-attribute name="content" value="/WEB-INF/jsp/admin/table.jsp" />
+	<definition name="brand-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/brand-index.jsp" />
+	</definition>
+	<definition name="brand-create" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/brand-create.jsp" />
+	</definition>
+	<definition name="brand-update" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/brand-update.jsp" />
+	</definition>
+	
+	<definition name="category-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/category-index.jsp" />
+	</definition>
+	<definition name="category-create" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/category-create.jsp" />
+	</definition>
+	<definition name="category-update" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/category-update.jsp" />
+	</definition>
+	
+	<definition name="product-color-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-color-index.jsp" />
+	</definition>
+	<definition name="product-color-create" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-color-create.jsp" />
+	</definition>
+	<definition name="product-color-update" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-color-update.jsp" />
 	</definition>
 	<!-- ERROR PAGE -->
 	<definition name="custom-error" template="/WEB-INF/views/custom-error.jsp" >
