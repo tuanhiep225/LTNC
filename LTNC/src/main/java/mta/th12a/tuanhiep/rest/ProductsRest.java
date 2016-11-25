@@ -3,7 +3,10 @@ package mta.th12a.tuanhiep.rest;
 import java.io.IOException;
 import java.util.List;
 
+import mta.th12a.tuanhiep.dto.ModelDTO;
+import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.model.Products;
+import mta.th12a.tuanhiep.service.IBrandsService;
 import mta.th12a.tuanhiep.service.IProductsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +21,25 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
+@RequestMapping(value="/api/product")
 public class ProductsRest {
 	@Autowired
 	private IProductsService productService;
-	@RequestMapping(value="/product/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Products> getAll()
+	@RequestMapping(value="/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ModelDTO<Products> getAll()
 	{
-		return productService.getAll();
+		ModelDTO<Products> dto=new ModelDTO<Products>();
+		dto.setData(productService.getAll());
+		dto.setItemCount(productService.getAll().size());
+		return dto;
 	}
 	
-	@RequestMapping(value="/product/update",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int update(@RequestBody String data)
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public int update(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Products product=obj.readValue(data, Products.class);
+			Products product=obj.readValue(models, Products.class);
 			productService.update(product);
 			return 1;
 		} catch (JsonParseException e) {
@@ -47,12 +54,12 @@ public class ProductsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/product/create",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int create(@RequestBody String data)
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	public int create(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Products product = obj.readValue(data, Products.class);
+			Products product = obj.readValue(models, Products.class);
 			productService.add(product);
 			return 1;
 		} catch (JsonParseException e) {
@@ -67,17 +74,23 @@ public class ProductsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/product/delete/{id}",method=RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int delete(@PathVariable("id") int data)
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public int delete(@RequestBody String models)
 	{
-		try{
-			
-			productService.delete(data);
+		ObjectMapper obj= new ObjectMapper();
+		try {
+			Products product = obj.readValue(models, Products.class);
+			productService.delete(product.getProductId());
 			return 1;
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return 0;
 	}

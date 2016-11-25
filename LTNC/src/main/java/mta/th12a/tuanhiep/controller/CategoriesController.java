@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import mta.th12a.tuanhiep.auth.Auth;
 import mta.th12a.tuanhiep.model.Categories;
 import mta.th12a.tuanhiep.service.ICategoriesService;
 
@@ -16,6 +18,7 @@ import mta.th12a.tuanhiep.service.ICategoriesService;
 public class CategoriesController {
 	@Autowired
 	ICategoriesService categoryService;
+	@Auth(role=1)
 	@RequestMapping(value="/index")
 	public ModelAndView Index()
 	{

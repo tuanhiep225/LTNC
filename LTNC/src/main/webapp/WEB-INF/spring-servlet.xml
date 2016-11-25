@@ -23,6 +23,14 @@
 	<context:annotation-config />
 	<context:component-scan base-package="mta.th12a.tuanhiep" />	
 	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/**" />
+        <mvc:exclude-mapping path="/authen/login" />
+        <mvc:exclude-mapping path="/resources/**"/>
+        <bean class="mta.th12a.tuanhiep.auth.AuthInterceptor" />
+    </mvc:interceptor>
+	</mvc:interceptors>
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="/WEB-INF/jdbc.properties" />
@@ -70,11 +78,22 @@
 	    <property name="prefix" value="/WEB-INF/jsp/"/>
 	    <property name="suffix" value=".jsp"/>
 	</bean> -->
-	<mvc:view-controller path="/" view-name="table"/> <!-- Set trang mac dinh khi chay -->
+	<!-- <mvc:view-controller path="/" view-name="redirect"/> --> <!-- Set trang mac dinh khi chay -->
 	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
 	<tx:annotation-driven />
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>	
+	<bean class = "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <property name="messageConverters">
+        <array>
+            <bean class = "org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value = "application/json;charset=UTF-8" />
+            </bean>
+        </array>
+    </property>
+</bean>
+<bean id="multipartResolver"
+  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>

@@ -7,8 +7,8 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
+                <div id="grid-brand"></div>
+                 <%--  <div class="x_title">
                     <h2>Admin <small>Thương Hiệu</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -55,7 +55,16 @@
                         </c:forEach>
                       </tbody>
                     </table>
-                  </div>
-                </div>
+                  </div> --%>
               </div>
 </div>
+<style>
+ .k-button {
+    text-transform:none !important;
+    border-radius:10px;
+    padding: 5px 5px;
+    border-width: 0px;
+    min-width: 45px !important;
+    }
+</style>
+ <script src="${pageContext.request.contextPath}/resources/tuychinh/brand.js"></script>

@@ -27,7 +27,7 @@ public class ProductSizesDaoImpl implements IProductSizesDao {
 	@Override
 	public List<ProductSizes> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productsizes where IsActive=1").list();
+		return sessionFactory.getCurrentSession().createQuery("from ProductSizes where IsActive=1").list();
 	}@Override
 	public ProductSizes getByID(int id) {
 		

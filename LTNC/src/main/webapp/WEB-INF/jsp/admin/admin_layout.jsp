@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +18,10 @@
 
     <!-- Bootstrap -->
     <tiles:insertAttribute name="resource_css"/>
+    <script src="${pageContext.request.contextPath}/resources/KendoJs/js/jquery.min.js"></script>
+    <!-- Kendo -->
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/KendoJs/js/kendo.all.min.js"></script>
   </head>
 
   <body class="nav-md">

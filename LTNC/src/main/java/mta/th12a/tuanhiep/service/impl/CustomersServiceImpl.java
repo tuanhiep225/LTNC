@@ -43,4 +43,10 @@ public class CustomersServiceImpl implements ICustomersService{
 		customerDao.update(entity);
 		
 	}
+	@Transactional
+	@Override
+	public Customers authen(String userName,String passWord) {
+		// TODO Auto-generated method stub
+		return customerDao.authen(userName, passWord);
+	}
 }

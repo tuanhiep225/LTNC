@@ -27,7 +27,7 @@ public class ProductImagesDaoImpl implements IProductImagesDao {
 	@Override
 	public List<ProductImages> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from productimages where IsActive=1").list();
+		return sessionFactory.getCurrentSession().createQuery("from ProductImages where IsActive=1").list();
 	}@Override
 	public ProductImages getByID(int id) {
 		

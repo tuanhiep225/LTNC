@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mta.th12a.tuanhiep.auth.Auth;
 import mta.th12a.tuanhiep.model.ProductColors;
 import mta.th12a.tuanhiep.service.IProductCorlorsService;
 
@@ -18,6 +19,7 @@ public class ProductColorsController {
 	@Autowired
 	IProductCorlorsService productColorService;
 	@RequestMapping(value="/index")
+	@Auth(role=1)
 	public ModelAndView Index()
 	{
 		return new ModelAndView("product-color-index","listProductColor",productColorService.getAll());

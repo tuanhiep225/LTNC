@@ -19,5 +19,9 @@
     <link href="${pageContext.request.contextPath}/resources/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- starrr -->
     <link href="${pageContext.request.contextPath}/resources/vendors/starrr/dist/starrr.css" rel="stylesheet">
+   <!--  KenDoJS -->
+   		<link href="${pageContext.request.contextPath}/resources/KendoJs/styles/kendo.common-material.min.css" rel="stylesheet" />
+      <link href="${pageContext.request.contextPath}/resources/KendoJs/styles/kendo.material.min.css" rel="stylesheet" />
+      <link href="${pageContext.request.contextPath}/resources/KendoJs/styles/kendo.material.mobile.min.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/resources/build/css/custom.min.css" rel="stylesheet">

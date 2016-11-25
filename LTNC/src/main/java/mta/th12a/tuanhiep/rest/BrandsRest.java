@@ -1,8 +1,11 @@
 package mta.th12a.tuanhiep.rest;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import mta.th12a.tuanhiep.dto.BaseDTO;
+import mta.th12a.tuanhiep.dto.ModelDTO;
 import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
 
@@ -18,23 +21,30 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 @RestController
 @RequestMapping(value="/api/brand")
 public class BrandsRest {
 	@Autowired
 	private IBrandsService brandService;
 	@RequestMapping(value="/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Brands> getAll()
+	public ModelDTO<Brands> getAll()
 	{
-		return brandService.getAll();
+		ModelDTO<Brands> dto=new ModelDTO<Brands>();
+		dto.setData(brandService.getAll());
+		dto.setItemCount(brandService.getAll().size());
+		return dto;
 	}
 	
-	@RequestMapping(value="/update",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int update(@RequestBody String data)
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public int update(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Brands brand=obj.readValue(data, Brands.class);
+			Brands brand=obj.readValue(models, Brands.class);
 			brandService.update(brand);
 			return 1;
 		} catch (JsonParseException e) {
@@ -49,12 +59,12 @@ public class BrandsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/create",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int create(@RequestBody String data)
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	public int create(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Brands brand = obj.readValue(data, Brands.class);
+			Brands brand = obj.readValue(models, Brands.class);
 			brandService.add(brand);
 			return 1;
 		} catch (JsonParseException e) {
@@ -69,17 +79,23 @@ public class BrandsRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int delete(@PathVariable("id") int data)
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public int delete(@RequestBody String models)
 	{
-		try{
-			
-			brandService.delete(data);
+		ObjectMapper obj= new ObjectMapper();
+		try {
+			Brands brand = obj.readValue(models, Brands.class);
+			brandService.delete(brand.getBrandId());
 			return 1;
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return 0;
 	}

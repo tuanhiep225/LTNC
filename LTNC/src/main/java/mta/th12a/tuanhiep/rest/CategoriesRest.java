@@ -3,6 +3,7 @@ package mta.th12a.tuanhiep.rest;
 import java.io.IOException;
 import java.util.List;
 
+import mta.th12a.tuanhiep.dto.ModelDTO;
 import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.model.Categories;
 import mta.th12a.tuanhiep.service.IBrandsService;
@@ -20,21 +21,25 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
+@RequestMapping(value="/api/category")
 public class CategoriesRest {
 	@Autowired
 	private ICategoriesService categoryService;
-	@RequestMapping(value="/category/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Categories> getAll()
+	@RequestMapping(value="/getall",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ModelDTO<Categories> getAll()
 	{
-		return categoryService.getAll();
+		ModelDTO<Categories> dto=new ModelDTO<Categories>();
+		dto.setData(categoryService.getAll());
+		dto.setItemCount(categoryService.getAll().size());
+		return dto;
 	}
 	
-	@RequestMapping(value="/category/update",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int update(@RequestBody String data)
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public int update(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Categories category=obj.readValue(data, Categories.class);
+			Categories category=obj.readValue(models, Categories.class);
 			categoryService.update(category);
 			return 1;
 		} catch (JsonParseException e) {
@@ -49,12 +54,12 @@ public class CategoriesRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/category/create",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int create(@RequestBody String data)
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	public int create(@RequestBody String models)
 	{
 		ObjectMapper obj= new ObjectMapper();
 		try {
-			Categories category = obj.readValue(data, Categories.class);
+			Categories category = obj.readValue(models, Categories.class);
 			categoryService.add(category);
 			return 1;
 		} catch (JsonParseException e) {
@@ -69,17 +74,23 @@ public class CategoriesRest {
 		}
 		return 0;
 	}
-	@RequestMapping(value="/category/delete/{id}",method=RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public int delete(@PathVariable("id") int data)
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public int delete(@RequestBody String models)
 	{
-		try{
-			
-			categoryService.delete(data);
+		ObjectMapper obj= new ObjectMapper();
+		try {
+			Categories category=obj.readValue(models, Categories.class);
+			categoryService.delete(category.getCategoryId());
 			return 1;
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return 0;
 	}

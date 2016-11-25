@@ -27,7 +27,7 @@ public class ProductsDaoImpl implements IProductsDao {
 	@Override
 	public List<Products> getAll() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from products where IsActive=1").list();
+		return sessionFactory.getCurrentSession().createQuery("from Products where IsActive=1").list();
 	}@Override
 	public Products getByID(int id) {
 		

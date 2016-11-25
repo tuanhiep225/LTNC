@@ -7,7 +7,8 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
+              <div id="grid-category"></div>
+                <%-- <div class="x_panel">
                   <div class="x_title">
                     <h2>Admin <small>Danh Mục</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -56,6 +57,16 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> --%>
               </div>
 </div>
+<style>
+ .k-button {
+    text-transform:none !important;
+    border-radius:10px;
+    padding: 5px 5px;
+    border-width: 0px;
+    min-width: 45px !important;
+    }
+</style>
+<script src="${pageContext.request.contextPath}/resources/tuychinh/category.js"></script>

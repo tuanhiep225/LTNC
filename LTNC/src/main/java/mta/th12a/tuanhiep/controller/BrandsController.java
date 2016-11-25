@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mta.th12a.tuanhiep.auth.Auth;
 import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
 
@@ -17,6 +18,7 @@ import mta.th12a.tuanhiep.service.IBrandsService;
 public class BrandsController {
 	@Autowired
 	IBrandsService brandService;
+	@Auth(role=1)
 	@RequestMapping(value="/index")
 	public ModelAndView Index()
 	{

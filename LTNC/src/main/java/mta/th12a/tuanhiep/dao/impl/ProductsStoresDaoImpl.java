@@ -24,7 +24,7 @@ public class ProductsStoresDaoImpl implements IProductsStoresDao {
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductStores> getAll() {		
-		return sessionFactory.getCurrentSession().createQuery("from productstores where IsActive=1").list();
+		return sessionFactory.getCurrentSession().createQuery("from ProductStores where IsActive=1").list();
 	}@Override
 	public ProductStores getByID(int id) {
 		

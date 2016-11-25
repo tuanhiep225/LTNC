@@ -2,6 +2,7 @@ package mta.th12a.tuanhiep.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,5 +37,17 @@ public class CustomersDaoImpl implements ICustomersDao{
 	public void update(Customers customer) {
 		sessionFactory.getCurrentSession().update(customer);
 		
+	}
+	@Override
+	public Customers authen(String userName,String passWord) {
+		String sql="from Customers where Account='"+userName+"' and Password='"+passWord+"'";
+		/*String sql="select e from "+Customers.class.getName()+" e where e.Account=:userName";
+		Query query=sessionFactory.getCurrentSession().createQuery(sql);
+		query.setParameter("userName",userName);
+		List<Customers> listCustomer=query.list();*/
+		List<Customers> listCustomer= sessionFactory.getCurrentSession().createQuery(sql).list();
+		if(listCustomer.size()>0)
+		return listCustomer.get(0);
+		return null;
 	}
 }

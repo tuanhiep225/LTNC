@@ -40,6 +40,34 @@
 	<definition name="product-color-update" extends="admin-layout">
 	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-color-update.jsp" />
 	</definition>
+	
+	<definition name="product-size-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-size-index.jsp" />
+	</definition>
+	<definition name="product-size-create" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-size-create.jsp" />
+	</definition>
+	<definition name="product-size-update" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-size-update.jsp" />
+	</definition>
+	
+	<definition name="customer-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/customer-index.jsp" />
+	</definition>
+	
+	<definition name="product-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-index.jsp" />
+	</definition>
+	
+	<definition name="product-store-index" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/product-store-index.jsp" />
+	</definition>
+	
+	<definition name="upload" extends="admin-layout">
+	    <put-attribute name="content" value="/WEB-INF/jsp/admin/upload.jsp" />
+	</definition>
+	<definition name="login" template="/WEB-INF/jsp/admin/login.jsp">
+	</definition>
 	<!-- ERROR PAGE -->
 	<definition name="custom-error" template="/WEB-INF/views/custom-error.jsp" >
 	</definition>
