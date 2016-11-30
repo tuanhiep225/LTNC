@@ -16,7 +16,7 @@ import mta.th12a.tuanhiep.service.IProductCorlorsService;
 import mta.th12a.tuanhiep.service.IProductSizesService;
 
 @Controller
-@RequestMapping(value="/product-size")
+@RequestMapping(value="/admin/product-size")
 public class ProductSizesController {
 	@Autowired
 	IProductSizesService productSizeService;

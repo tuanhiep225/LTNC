@@ -22,7 +22,9 @@ public class Categories  implements java.io.Serializable {
 
      private int categoryId;
      private String categoryName;
-     private Boolean isActive;
+     private Integer categoryParent;
+
+	private Boolean isActive;
 
     public Categories() {
     }
@@ -31,9 +33,10 @@ public class Categories  implements java.io.Serializable {
     public Categories(int categoryId) {
         this.categoryId = categoryId;
     }
-    public Categories(int categoryId, String categoryName, Boolean isActive) {
+    public Categories(int categoryId, String categoryName, Boolean isActive, Integer categoryParent) {
        this.categoryId = categoryId;
        this.categoryName = categoryName;
+       this.categoryParent=categoryParent;
        this.isActive = isActive;
     }
    
@@ -57,7 +60,15 @@ public class Categories  implements java.io.Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+    @Column(name="Category_Parent")
+    public Integer getCategoryParent() {
+		return categoryParent;
+	}
 
+
+	public void setCategoryParent(Integer categoryParent) {
+		this.categoryParent = categoryParent;
+	}
     
     @Column(name="IsActive")
     public Boolean getIsActive() {

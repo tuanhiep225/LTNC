@@ -14,7 +14,7 @@ import mta.th12a.tuanhiep.model.ProductColors;
 import mta.th12a.tuanhiep.service.IProductCorlorsService;
 
 @Controller
-@RequestMapping(value="/product-color")
+@RequestMapping(value="/admin/product-color")
 public class ProductColorsController {
 	@Autowired
 	IProductCorlorsService productColorService;

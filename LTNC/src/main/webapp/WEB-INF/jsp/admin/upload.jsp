@@ -24,3 +24,13 @@
             </script>
             </div>
 </div>
+<form:form method="post" action="upload" modelAttribute="uploadForm" enctype="multipart/form-data">
+      <table id="fileTable">
+           <tr>
+                <td>Chọn hình ảnh: </td><td><input name="fileUpload" type="file" /></td>
+           </tr>
+           <tr>
+                <td colspan="2"><input type="submit" value="Tải dữ liệu lên máy chủ..." /></td>
+           </tr>
+     </table>
+</form:form>

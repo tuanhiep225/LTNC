@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mta.th12a.tuanhiep.dao.IProductsDao;
+import mta.th12a.tuanhiep.dto.ProductDTO;
 import mta.th12a.tuanhiep.model.Products;
 import mta.th12a.tuanhiep.service.IProductsService;
 @Service
@@ -41,5 +42,10 @@ public class ProductsServiceImpl implements IProductsService{
 	public void update(Products entity) {
 		productDao.update(entity);
 		
+	}
+	@Transactional
+	@Override
+	public List<ProductDTO> getListByCategoryID(int ID) {
+		return productDao.getListByCategoryID(ID);
 	}
 }

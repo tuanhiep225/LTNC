@@ -26,7 +26,7 @@
 	<mvc:interceptors>
     <mvc:interceptor>
         <mvc:mapping path="/**" />
-        <mvc:exclude-mapping path="/authen/login" />
+        <mvc:exclude-mapping path="/admin/authen/login" />
         <mvc:exclude-mapping path="/resources/**"/>
         <bean class="mta.th12a.tuanhiep.auth.AuthInterceptor" />
     </mvc:interceptor>

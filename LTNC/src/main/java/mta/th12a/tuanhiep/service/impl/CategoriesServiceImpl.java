@@ -43,4 +43,20 @@ public class CategoriesServiceImpl implements ICategoriesService{
 		categoriesDao.update(brand);
 		
 	}
+	@Transactional
+	@Override
+	public List<Categories> getListChild() {
+		return categoriesDao.getListChild();
+	}
+	@Transactional
+	@Override
+	public List<Categories> getListParent() {
+		return categoriesDao.getListParent();
+	}
+	@Transactional
+	@Override
+	public List<Categories> getByIDParent(int ID) {
+			// TODO Auto-generated method stub
+			return categoriesDao.getByIDParent(ID);
+	}
 }

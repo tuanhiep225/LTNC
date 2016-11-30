@@ -7,9 +7,9 @@
     	<put-attribute name="resource_css" value="/WEB-INF/layout/resource_css.jsp" />
         <put-attribute name="content" value="" />
         <put-attribute name="resource_scripts" value="/WEB-INF/layout/resource_scripts.jsp" />
-        <put-attribute name="footter" value="/WEB-INF/layout/footter.jsp" />
-        
+        <put-attribute name="footter" value="/WEB-INF/layout/footter.jsp" />       
 	</definition>
+	
 
 	<definition name="brand-index" extends="admin-layout">
 	    <put-attribute name="content" value="/WEB-INF/jsp/admin/brand-index.jsp" />
@@ -67,6 +67,19 @@
 	    <put-attribute name="content" value="/WEB-INF/jsp/admin/upload.jsp" />
 	</definition>
 	<definition name="login" template="/WEB-INF/jsp/admin/login.jsp">
+	</definition>
+	
+	<definition name="customerlayout" template="/WEB-INF/jsp/customer/layout.jsp" >
+		<put-attribute name="homeheader" value="/WEB-INF/jsp/customer/partial_layout/header.jsp" />
+        <put-attribute name="homecontent" value="" />
+        <put-attribute name="homefooter" value="/WEB-INF/jsp/customer/partial_layout/footer.jsp" />       
+	</definition>
+	
+	<definition name="home-index" extends="customerlayout">
+	    <put-attribute name="homecontent" value="/WEB-INF/jsp/customer/index.jsp" />
+	</definition>
+	<definition name="product-customer" extends="customerlayout">
+	    <put-attribute name="homecontent" value="/WEB-INF/jsp/customer/product.jsp" />
 	</definition>
 	<!-- ERROR PAGE -->
 	<definition name="custom-error" template="/WEB-INF/views/custom-error.jsp" >

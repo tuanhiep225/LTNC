@@ -175,7 +175,7 @@ $(document).ready(function () {
 		                {
 		                	field: "productImage", title: "Ảnh", width: 175,
 		                	 template: "<div class='customer-photo'" +
-		                     "style='background-image: url(/LTNC/resources/images/picture.jpg);'></div>"
+		                     "style='background-image: url(/LTNC/resources/images/upload/#:data.productImage#);'></div>"
 		                }
 		        ],
 		        editable: {

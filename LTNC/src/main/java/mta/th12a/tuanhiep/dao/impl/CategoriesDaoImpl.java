@@ -20,6 +20,9 @@ public class CategoriesDaoImpl implements ICategoriesDao{
 	}@Override
 	public void delete(int ID) {		
 		Categories entity=getByID(ID);
+		if(entity.getCategoryParent()==null){
+			sessionFactory.getCurrentSession().createQuery("Update Categories set IsActive=0 where Category_Parent=:parentId").setParameter("parentId", entity.getCategoryId()).executeUpdate();
+		}		
 		entity.setIsActive(false);
 		update(entity);
 	}@SuppressWarnings("unchecked")
@@ -35,5 +38,19 @@ public class CategoriesDaoImpl implements ICategoriesDao{
 	public void update(Categories category) {
 		sessionFactory.getCurrentSession().update(category);
 		
+	}
+	@Override
+	public List<Categories> getListChild() {
+		return sessionFactory.getCurrentSession().createQuery("from Categories where Category_Parent is not Null and IsActive=1").list();
+		
+	}
+	@Override
+	public List<Categories> getListParent() {
+		return sessionFactory.getCurrentSession().createQuery("from Categories where Category_Parent is Null and IsActive=1").list();
+	}
+	@Override
+	public List<Categories> getByIDParent(int ID) {
+		List<Categories> list=sessionFactory.getCurrentSession().createQuery("from Categories where IsActive=1 and Category_Parent=:parentId").setParameter("parentId", ID).list();
+		return list;
 	}
 }

@@ -14,7 +14,7 @@ import mta.th12a.tuanhiep.model.Categories;
 import mta.th12a.tuanhiep.service.ICategoriesService;
 
 @Controller
-@RequestMapping(value="/category")
+@RequestMapping(value="/admin/category")
 public class CategoriesController {
 	@Autowired
 	ICategoriesService categoryService;

@@ -33,7 +33,22 @@ public class CategoriesRest {
 		dto.setItemCount(categoryService.getAll().size());
 		return dto;
 	}
-	
+	@RequestMapping(value="/getListChild",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ModelDTO<Categories> getListChild()
+	{
+		ModelDTO<Categories> dto=new ModelDTO<Categories>();
+		dto.setData(categoryService.getListChild());
+		dto.setItemCount(categoryService.getListChild().size());
+		return dto;
+	}
+	@RequestMapping(value="/getListParent",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ModelDTO<Categories> getListParent()
+	{
+		ModelDTO<Categories> dto=new ModelDTO<Categories>();
+		dto.setData(categoryService.getListParent());
+		dto.setItemCount(categoryService.getListParent().size());
+		return dto;
+	}
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public int update(@RequestBody String models)
 	{

@@ -9,9 +9,9 @@ import mta.th12a.tuanhiep.service.ICustomersService;
 import mta.th12a.tuanhiep.service.IProductsService;
 
 @Controller
-@RequestMapping(value="/product")
+@RequestMapping(value="/admin/product")
 public class ProductsController {
-	//@Auth(role=1)
+	@Auth(role=1)
 	@RequestMapping(value="/index")
 	public String Index()
 	{

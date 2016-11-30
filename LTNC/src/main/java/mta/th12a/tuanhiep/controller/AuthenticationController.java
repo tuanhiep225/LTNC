@@ -18,7 +18,7 @@ import mta.th12a.tuanhiep.model.Customers;
 import mta.th12a.tuanhiep.service.ICustomersService;
 
 @Controller
-@RequestMapping(value="/authen")
+@RequestMapping(value="/admin/authen")
 public class AuthenticationController {
 	@Autowired
 	ICustomersService custommer;

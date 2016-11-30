@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import mta.th12a.tuanhiep.auth.Auth;
 
 @Controller
-@RequestMapping(value="/product-store")
+@RequestMapping(value="/admin/product-store")
 public class ProductStoresController {
-	//@Auth(role=1)
+	@Auth(role=1)
 	@RequestMapping(value="/index")
 	public String Index()
 	{

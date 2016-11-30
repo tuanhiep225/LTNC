@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("/LTNC/authen/login"); %>
+<% response.sendRedirect("/LTNC/home"); %>
 </body>
 </html>

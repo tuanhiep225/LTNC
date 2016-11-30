@@ -14,7 +14,7 @@ import mta.th12a.tuanhiep.model.Brands;
 import mta.th12a.tuanhiep.service.IBrandsService;
 
 @Controller
-@RequestMapping(value="/brand")
+@RequestMapping(value="/admin/brand")
 public class BrandsController {
 	@Autowired
 	IBrandsService brandService;

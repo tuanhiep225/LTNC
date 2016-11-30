@@ -10,4 +10,7 @@ public interface ICategoriesDao {
 	public void delete (int ID);
 	public Categories getByID(int ID);
 	public List<Categories> getAll();
+	public List<Categories> getListChild();
+	public List<Categories> getListParent();
+	public List<Categories> getByIDParent(int ID);
 }

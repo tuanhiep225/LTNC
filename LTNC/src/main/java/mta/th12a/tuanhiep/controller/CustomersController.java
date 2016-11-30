@@ -9,7 +9,7 @@ import mta.th12a.tuanhiep.auth.Auth;
 import mta.th12a.tuanhiep.service.ICustomersService;
 
 @Controller
-@RequestMapping(value="/customer")
+@RequestMapping(value="/admin/customer")
 public class CustomersController {
 	@Autowired
 	private ICustomersService customerService;
