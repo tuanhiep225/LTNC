@@ -163,9 +163,8 @@
 								</div>
 							</ul>
 						</li>
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="short-codes.html">Short Codes</a></li>
-						<li><a href="mail.html">Mail Us</a></li>
+						<li><a href="about.html">Về Chúng Tôi</a></li>
+						<li><a href="mail.html">Email</a></li>
 					</ul>
 				</div>
 			</nav>

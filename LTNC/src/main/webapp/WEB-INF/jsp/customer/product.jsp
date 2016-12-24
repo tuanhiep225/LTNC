@@ -1,3 +1,7 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- banner -->
@@ -27,53 +31,30 @@
 						<h3>Danh Mục</h3>
 						<div class="w3ls_dresses_grid_left_grid_sub">
 							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							  <div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-								  <h4 class="panel-title asd">
-									<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>New Arrivals
-									</a>
-								  </h4>
-								</div>
-								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-								  <div class="panel-body panel_text">
-									<ul>
-										<li><a href="dresses.html">Dresses</a></li>
-										<li><a href="sweaters.html">Sweaters</a></li>
-										<li><a href="skirts.html">Shorts & Skirts</a></li>
-										<li><a href="jeans.html">Jeans</a></li>
-										<li><a href="shirts.html">Shirts</a></li>
-									</ul>
+							<c:forEach items="${listCategory}" var="item">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+									  <h4 class="panel-title asd">
+										<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
+										  ${item.parentCategory.categoryName}
+										</a>
+									  </h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+									  <div class="panel-body panel_text">
+										<ul>
+										<c:forEach items="${item.childCategory}" var="subitem">
+											<li><a href="${pageContext.request.contextPath}/product/${subitem.categoryId}">${subitem.categoryName}</a></li>
+										</c:forEach>
+											
+										</ul>
+									  </div>
+									</div>
 								  </div>
-								</div>
-							  </div>
-							  <div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingTwo">
-								  <h4 class="panel-title asd">
-									<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Foot Wear
-									</a>
-								  </h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-								   <div class="panel-body panel_text">
-									<ul>
-										<li><a href="sandals.html">Flats</a></li>
-										<li><a href="sandals.html">Sandals</a></li>
-										<li><a href="sandals.html">Boots</a></li>
-										<li><a href="sandals.html">Heals</a></li>
-										<li><a href="sandals.html">Shirts</a></li>
-									</ul>
-								  </div>
-								</div>
-							  </div>
+							</c:forEach>
+
 							</div>
-							<ul class="panel_bottom">
-								<li><a href="products.html">Summer Store</a></li>
-								<li><a href="dresses.html">New In Clothing</a></li>
-								<li><a href="sandals.html">New In Shoes</a></li>
-								<li><a href="products.html">Latest Watches</a></li>
-							</ul>
 						</div>
 					</div>
 					<div class="w3ls_dresses_grid_left_grid">
@@ -122,17 +103,11 @@
 					</div>
 					<div class="w3ls_dresses_grid_right_grid3">
 					<!-- Hình Ảnh Show -->
+					<c:forEach items="${listProduct}" var="item">
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses">
 							<div class="agile_ecommerce_tab_left dresses_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t1.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t2.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t3.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t4.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t5.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t6.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t7.jpg" alt=" " class="img-responsive" />
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/t8.jpg" alt=" " class="img-responsive" />
+									<img src="${pageContext.request.contextPath}/resources/customer_user/images/${item.productImage}" alt=" " class="img-responsive" />
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -141,16 +116,15 @@
 										</ul>
 									</div>
 								</div>
-								<h5><a href="single.html">Brown Top</a></h5>
+								<h5><a href="single.html">${item.productName}</a></h5>
 								<div class="simpleCart_shelfItem">
 									<p><span>$420</span> <i class="item_price">$340</i></p>
 									<p><a class="item_add" href="#">Add to cart</a></p>
 								</div>
-								<div class="dresses_grid_pos">
-									<h6>New</h6>
-								</div>
 							</div>
 						</div>
+					</c:forEach>
+						
 						<div class="clearfix"> </div>
 					<!-- //Hình ảnh show -->
 					</div>

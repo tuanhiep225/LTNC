@@ -3,26 +3,24 @@
 <div class="footer">
 		<div class="container">
 			<div class="w3_footer_grids">
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Contact</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+				<div class="col-md-4 w3_footer_grid">
+					<h3>Liên Hệ</h3>
 					<ul class="address">
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>236 Hoàng Quốc Việt,<span>Hà Nội</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:tuanhiep225@gmail.com">tuanhiep225@gmail.com</a></li>
 						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
 					</ul>
 				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Information</h3>
+				<div class="col-md-4 w3_footer_grid">
+					<h3>Thông Tin</h3>
 					<ul class="info"> 
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="mail.html">Contact Us</a></li>
-						<li><a href="short-codes.html">Short Codes</a></li>
-						<li><a href="faq.html">FAQ's</a></li>
-						<li><a href="products.html">Special Products</a></li>
+						<li><a href="about.html">Về chúng tôi</a></li>
+						<li><a href="mail.html">Liên hệ với chúng tôi</a></li>
+						<li><a href="faq.html">Câu hỏi thường gặp</a></li>
+						<li><a href="products.html">Sản phẩm đặc chưng</a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 w3_footer_grid">
+				<div class="col-md-4 w3_footer_grid">
 					<h3>Category</h3>
 					<ul class="info"> 
 						<li><a href="dresses.html">Dresses</a></li>
@@ -31,22 +29,6 @@
 						<li><a href="sarees.html">Sarees</a></li>
 						<li><a href="skirts.html">Shorts & Skirts</a></li>
 					</ul>
-				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Profile</h3>
-					<ul class="info"> 
-						<li><a href="products.html">Summer Store</a></li>
-						<li><a href="checkout.html">My Cart</a></li>
-					</ul>
-					<h4>Follow Us</h4>
-					<div class="agileits_social_button">
-						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="twitter"> </a></li>
-							<li><a href="#" class="google"> </a></li>
-							<li><a href="#" class="pinterest"> </a></li>
-						</ul>
-					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -58,7 +40,7 @@
 				</div>
 			</div>
 			<div class="container">
-				<p>&copy; 2016 Women's Fashion. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<p>&copy; 2016 Shop thời trang nữ. Tất cả quyền được bảo lưu | Thiết kế bởi <a href="http://w3layouts.com/">Nhóm 3</a></p>
 			</div>
 		</div>
 	</div>

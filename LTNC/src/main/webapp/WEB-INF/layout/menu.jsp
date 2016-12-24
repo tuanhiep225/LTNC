@@ -27,15 +27,15 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="${pageContext.request.contextPath}/category/index"><i class="fa fa-home"></i> Danh Mục</a></li>
-                  <li><a href="${pageContext.request.contextPath}/brand/index"><i class="fa fa-home"></i> Thương Hiệu</a></li>
-                  <li><a href="${pageContext.request.contextPath}/product-color/index"><i class="fa fa-home"></i> Màu Sắc</a></li>
-                  <li><a href="${pageContext.request.contextPath}/product-size/index"><i class="fa fa-home"></i> Kích Thước</a></li>
-                  <li><a href="${pageContext.request.contextPath}/product/index"><i class="fa fa-home"></i> Sản Phẩm</a></li>
-                  <li><a href="${pageContext.request.contextPath}/customer/index"><i class="fa fa-home"></i> Khách Hàng</a></li>
-                  <li><a href="${pageContext.request.contextPath}/product-store/index"><i class="fa fa-home"></i> Store</a></li>
-                  <li><a href="${pageContext.request.contextPath}/order/index"><i class="fa fa-home"></i> Đơn Đặt Hàng</a></li>
-                  <li><a href="${pageContext.request.contextPath}/order-detail/index"><i class="fa fa-home"></i> Chi Tiết Đơn Hàng</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/category/index"><i class="fa fa-home"></i> Danh Mục</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/brand/index"><i class="fa fa-home"></i> Thương Hiệu</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/product-color/index"><i class="fa fa-home"></i> Màu Sắc</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/product-size/index"><i class="fa fa-home"></i> Kích Thước</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/product/index"><i class="fa fa-home"></i> Sản Phẩm</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/customer/index"><i class="fa fa-home"></i> Khách Hàng</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/product-store/index"><i class="fa fa-home"></i> Store</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/order/index"><i class="fa fa-home"></i> Đơn Đặt Hàng</a></li>
+                  <li><a href="${pageContext.request.contextPath}/admin/order-detail/index"><i class="fa fa-home"></i> Chi Tiết Đơn Hàng</a></li>
                 </ul>
               </div>
             </div>

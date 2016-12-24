@@ -27,12 +27,12 @@ public class AuthInterceptor implements HandlerInterceptor{
                 .getAttribute("role") : null;
         if (role != null) {
             if (!isLogined) {
-                response.sendRedirect("/LTNC/authen/login");
+                response.sendRedirect("/LTNC/admin/authen/login");
                 return false;
             } else {
             	if(!role.equals(loginRole))
             	{
-            		response.sendRedirect("/LTNC/authen/login");
+            		response.sendRedirect("/LTNC/admin/authen/login");
                     return false;
             	}
             }

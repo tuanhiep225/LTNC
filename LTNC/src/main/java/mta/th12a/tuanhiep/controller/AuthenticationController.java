@@ -36,7 +36,7 @@ public class AuthenticationController {
 			 session.setAttribute("isLogin", true);
              session.setAttribute("user", result.getAccount());
              session.setAttribute("role", result.getRole());
-             return "redirect:/brand/index";
+             return "redirect:/admin/brand/index";
 		}
 		return "login";
 	}
