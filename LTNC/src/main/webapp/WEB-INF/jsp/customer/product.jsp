@@ -111,7 +111,7 @@
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
-												<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+												<a href="#" data-toggle="modal" data-target="#myModal6" ><span class="glyphicon glyphicon-eye-open" data-id="${item.productId}" data-img="${item.productImage}" aria-hidden="true"></span></a>
 											</li>
 										</ul>
 									</div>
@@ -119,12 +119,10 @@
 								<h5><a href="single.html">${item.productName}</a></h5>
 								<div class="simpleCart_shelfItem">
 									<p><span>$420</span> <i class="item_price">$340</i></p>
-									<p><a class="item_add" href="#">Add to cart</a></p>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
-						
 						<div class="clearfix"> </div>
 					<!-- //Hình ảnh show -->
 					</div>
@@ -138,17 +136,10 @@
 								<section>
 									<div class="modal-body">
 										<div class="col-md-5 modal_body_left">
-											<img src="${pageContext.request.contextPath}/resources/customer_user/images/39.jpg" alt=" " class="img-responsive" />
 										</div>
 										<div class="col-md-7 modal_body_right">
 											<h4>a good look women's Long Skirt</h4>
-											<p>Ut enim ad minim veniam, quis nostrud 
-												exercitation ullamco laboris nisi ut aliquip ex ea 
-												commodo consequat.Duis aute irure dolor in 
-												reprehenderit in voluptate velit esse cillum dolore 
-												eu fugiat nulla pariatur. Excepteur sint occaecat 
-												cupidatat non proident, sunt in culpa qui officia 
-												deserunt mollit anim id est laborum.</p>
+											
 											<div class="rating">
 												<div class="rating-left">
 													<img src="${pageContext.request.contextPath}/resources/customer_user/images/star-.png" alt=" " class="img-responsive" />
@@ -167,18 +158,19 @@
 												</div>
 												<div class="clearfix"> </div>
 											</div>
-											<div class="modal_body_right_cart simpleCart_shelfItem">
-												<p><span>$320</span> <i class="item_price">$250</i></p>
-												<p><a class="item_add" href="#">Add to cart</a></p>
+											<h5>Kích Thước</h5>
+											<div class="kichthuoc">
+												<ul>
+												</ul>
 											</div>
 											<h5>Color</h5>
 											<div class="color-quality">
 												<ul>
-													<li><a href="#"><span></span>Red</a></li>
-													<li><a href="#" class="brown"><span></span>Yellow</a></li>
-													<li><a href="#" class="purple"><span></span>Purple</a></li>
-													<li><a href="#" class="gray"><span></span>Violet</a></li>
 												</ul>
+											</div>
+											<div class="modal_body_right_cart simpleCart_shelfItem">
+												<p><span>$320</span> <i class="item_price">$250</i></p>
+												<p><a class="item_add" href="#">Thêm vào giỏ hàng</a></p>
 											</div>
 										</div>
 										<div class="clearfix"> </div>
@@ -187,206 +179,98 @@
 							</div>
 						</div>
 					</div>
+					<script>
+					$('.glyphicon-eye-open').click(function(){
+						debugger
+						var id=$(this).data('id');
+						var img=$(this).data('img');
+						$('.modal_body_left').html('<img src="${pageContext.request.contextPath}/resources/customer_user/images/'+img+'" alt=" " class="img-responsive" />')
+						$('.item_add').attr('data-id',id);
+						$('.kichthuoc ul').html('');
+						$('.color-quality ul').html('');
+						$.ajax({
+							url:"/LTNC/cart/getlistcolor",
+							type:'POST',
+							dataType:'json',
+							data:{
+								id:id
+							},
+							success:function(list)
+							{
+								for(var i=0;i<list.length;i++)
+								{
+									if($('.color-quality ul').find('.'+list[i].productColorCss).length==0)
+									$('.color-quality ul').append('<li><a href="#" class="'+list[i].productColorCss+'"><input name="mausac" type="radio" value="'+list[i].productColorId+'"/>'+list[i].productColorName+'</a></li>')
+								}
+							}
+						})
+						
+						$.ajax({
+							url:"/LTNC/cart/getlistsize",
+							type:'POST',
+							dataType:'json',
+							data:{
+								id:id
+							},
+							success:function(list)
+							{
+								for(var i=0;i<list.length;i++)
+								{
+									if($('.kichthuoc ul').find('.kichthuoc'+list[i].productSizeId).length==0)
+									$('.kichthuoc ul').append('<li><a href="#" class="kichthuoc'+list[i].productSizeId+'"><span>'+list[i].productSizeName+'</span><input name="kichthuoc" type="radio" value="'+list[i].productSizeId+'" style="margin-left:5px;"/></a></li>')
+								}
+								
+							}
+						})
+					});
+					$('.item_add').click(function(){
+						undefined
+						var kichthuoc= parseInt($('input[name=kichthuoc]:checked', '.kichthuoc').val());
+						var mausac=parseInt($('input[name=mausac]:checked', '.color-quality').val());
+						var id=$(this).data('id');
+						if(typeof kichthuoc=='NaN'||typeof mausac=='NaN')
+						{
+							if($('.simpleCart_shelfItem').find('.error-mgs').length==0)
+							$('.simpleCart_shelfItem').append('<div class="error-mgs" style="color:red">Vui lòng chọn đầy đủ kích thước và màu sắc !</div>')
+						}
+						else
+							{
+							debugger
+								$.ajax({
+									url:"/LTNC/cart/insert",
+									type:'POST',
+									dataType:'json',
+									data:{
+										productId:id,
+										sizeId:kichthuoc,
+										colorId:mausac,
+										soLuong:1
+									},
+									success:function(response)
+									{
+										debugger
+										if(response.status==1)
+											{
+											debugger
+												$('#tongtien_head').html(response.total+' ('+response.count+' Sản Phẩm)')
+												if($('.simpleCart_shelfItem').find('.error-mgs').length>0)
+													$('.error-mgs').remove();
+												$('#myModal6').modal('hide');
+											}
+										else
+											{
+											if($('.simpleCart_shelfItem').find('.error-mgs').length==0)
+												$('.simpleCart_shelfItem').append('<div class="error-mgs" style="color:red">Kích thước hoặc Màu sắc này đã hết, vui lòng chọn lại !</div>');
+											else
+												$('.error-mgs').html('Kích thước hoặc Màu sắc này đã hết, vui lòng chọn lại !')
+											}
+									}
+								})
+							}
+					});
+					</script>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
-	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-				</div>
-				<section>
-					<div class="modal-body">
-						<div class="col-md-5 modal_body_left">
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/20.jpg" alt=" " class="img-responsive" />
-						</div>
-						<div class="col-md-7 modal_body_right">
-							<h4>a good look women's shirt</h4>
-							<p>Ut enim ad minim veniam, quis nostrud 
-								exercitation ullamco laboris nisi ut aliquip ex ea 
-								commodo consequat.Duis aute irure dolor in 
-								reprehenderit in voluptate velit esse cillum dolore 
-								eu fugiat nulla pariatur. Excepteur sint occaecat 
-								cupidatat non proident, sunt in culpa qui officia 
-								deserunt mollit anim id est laborum.</p>
-							<div class="rating">
-								<div class="rating-left">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/star-.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/star-.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/star-.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/star.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="${pageContext.request.contextPath}/resources/customer_user/images/star.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="modal_body_right_cart simpleCart_shelfItem">
-								<p><span>$320</span> <i class="item_price">$250</i></p>
-								<p><a class="item_add" href="#">Add to cart</a></p>
-							</div>
-							<h5>Color</h5>
-							<div class="color-quality">
-								<ul>
-									<li><a href="#"><span></span>Red</a></li>
-									<li><a href="#" class="brown"><span></span>Yellow</a></li>
-									<li><a href="#" class="purple"><span></span>Purple</a></li>
-									<li><a href="#" class="gray"><span></span>Violet</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
-	<%-- <div class="w3l_related_products">
-		<div class="container">
-			<h3>Related Products</h3>
-			<ul id="flexiselDemo2">			
-				<li>
-					<div class="w3l_related_products_grid">
-						<div class="agile_ecommerce_tab_left dresses_grid">
-							<div class="hs-wrapper hs-wrapper3">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss1.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss2.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss3.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss4.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss5.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss6.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss7.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss8.jpg" alt=" " class="img-responsive">
-								<div class="w3_hs_bottom">
-									<div class="flex_ecommerce">
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</div>
-								</div>
-							</div>
-							<h5><a href="single.html">Pink Flared Skirt</a></h5>
-							<div class="simpleCart_shelfItem">
-								<p class="flexisel_ecommerce_cart"><span>$312</span> <i class="item_price">$212</i></p>
-								<p><a class="item_add" href="#">Add to cart</a></p>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="w3l_related_products_grid">
-						<div class="agile_ecommerce_tab_left dresses_grid">
-							<div class="hs-wrapper hs-wrapper3">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss2.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss3.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss4.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss5.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss6.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss9.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss7.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss8.jpg" alt=" " class="img-responsive">
-								<div class="w3_hs_bottom">
-									<div class="flex_ecommerce">
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</div>
-								</div>
-							</div>
-							<h5><a href="single.html">Red Pencil Skirt</a></h5>
-							<div class="simpleCart_shelfItem">
-								<p class="flexisel_ecommerce_cart"><span>$432</span> <i class="item_price">$323</i></p>
-								<p><a class="item_add" href="#">Add to cart</a></p>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="w3l_related_products_grid">
-						<div class="agile_ecommerce_tab_left dresses_grid">
-							<div class="hs-wrapper hs-wrapper3">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss3.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss4.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss5.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss6.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss7.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss8.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss9.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss1.jpg" alt=" " class="img-responsive">
-								<div class="w3_hs_bottom">
-									<div class="flex_ecommerce">
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</div>
-								</div>
-							</div>
-							<h5><a href="single.html">Yellow Cotton Skirt</a></h5>
-							<div class="simpleCart_shelfItem">
-								<p class="flexisel_ecommerce_cart"><span>$323</span> <i class="item_price">$310</i></p>
-								<p><a class="item_add" href="#">Add to cart</a></p>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="w3l_related_products_grid">
-						<div class="agile_ecommerce_tab_left dresses_grid">
-							<div class="hs-wrapper hs-wrapper3">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss4.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss5.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss6.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss7.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss8.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss9.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss1.jpg" alt=" " class="img-responsive">
-								<img src="${pageContext.request.contextPath}/resources/customer_user/images/ss2.jpg" alt=" " class="img-responsive">
-								<div class="w3_hs_bottom">
-									<div class="flex_ecommerce">
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</div>
-								</div>
-							</div>
-							<h5><a href="single.html">Black Short</a></h5>
-							<div class="simpleCart_shelfItem">
-								<p class="flexisel_ecommerce_cart"><span>$256</span> <i class="item_price">$200</i></p>
-								<p><a class="item_add" href="#">Add to cart</a></p>
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-				<script type="text/javascript">
-					$(window).load(function() {
-						$("#flexiselDemo2").flexisel({
-							visibleItems:4,
-							animationSpeed: 1000,
-							autoPlay: true,
-							autoPlaySpeed: 3000,    		
-							pauseOnHover: true,
-							enableResponsiveBreakpoints: true,
-							responsiveBreakpoints: { 
-								portrait: { 
-									changePoint:480,
-									visibleItems: 1
-								}, 
-								landscape: { 
-									changePoint:640,
-									visibleItems:2
-								},
-								tablet: { 
-									changePoint:768,
-									visibleItems: 3
-								}
-							}
-						});
-						
-					});
-				</script>
-				<script type="text/javascript" src="${pageContext.request.contextPath}/resources/customer_user/js/jquery.flexisel.js"></script>
-		</div>
-	</div> --%>
-<!-- //dresses -->

@@ -10,4 +10,5 @@ public interface IProductsStoresService {
 	public void delete (int id);
 	public ProductStores getByID(int id);
 	public List<ProductStores> getAll();
+	public ProductStores FindByColorAndSize(int productId,int colorId,int sizeId);
 }

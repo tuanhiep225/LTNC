@@ -2,6 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@page import="mta.th12a.tuanhiep.model.Customers"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
@@ -26,15 +27,54 @@
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">			
-													<input name="Email" placeholder="Email Address" type="text" required="">						
-													<input name="Password" placeholder="Password" type="password" required="">										
+												<div>		
+													<input id="UserName" name="Email" placeholder="UserName" type="text" required="">						
+													<input id="PassWord" name="Password" placeholder="Password" type="password" required="">										
 													<div class="sign-up">
-														<input type="submit" value="Sign in"/>
+														<input id="dangnhap" type="submit" value="Sign in"/>
 													</div>
-												</form>
+												</div>
 											</div>
 										</div> 
+										<script>
+											$('#dangnhap').click(function(){
+												$.ajax({
+													url:'/LTNC/customer/authen',
+													dataType :'json',
+													data:{
+														userName:$('#UserName').val(),
+														passWord:$('#PassWord').val()
+													},
+													type:'POST',
+													success:function(e)
+													{
+														debugger
+														if(e!=null)
+															{
+															var a= $('.tab-1').find('.thongbao').length;
+															if(a>0)
+																{
+																	$('.thongbao').remove();
+																}
+															$('.nameCustomer').html(e.customer.name);
+															$('#myModal88').modal('hide');
+															
+															}
+														
+														else
+															{
+																var a= $('.tab-1').find('.thongbao').length;
+																if(a>0)
+																	{
+																		$('.thongbao').remove();
+																	}
+																
+																$('.tab-1').append('<div class="thongbao" style="color:red; margin-top:10px;">Tên đăng nhập hoặc mật khẩu không đúng</div>')
+															}
+													}
+												})
+											})
+										</script>
 									</div>	
 
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
@@ -46,9 +86,9 @@
 													<input placeholder="Password" name="Password" type="password" required="">	
 													<input placeholder="Confirm Password" name="Password" type="password" required="">
 													<div class="sign-up">
-														<input type="submit" value="Create Account"/>
+														<input id="signup" type="submit" value="Create Account"/>
 													</div>
-												</form>
+												</from>
 											</div>
 										</div>
 									</div> 			        					            	      
@@ -88,13 +128,12 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$('#myModal88').modal('show');
-	</script>
+
 	<div class="header">
 		<div class="container">
 			<div class="w3l_login">
 				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<div class="nameCustomer" style="margin-top:10px;color:orange;">${sessionScope.customer.name}</div>
 			</div>
 			<div class="w3l_logo">
 				<h1><a href="index.html">Women's Fashion<span>For Fashion Lovers</span></a></h1>
@@ -110,12 +149,12 @@
 				</div>
 			</div>
 			<div class="cart box_1">
-				<a href="checkout.html">
-					<div class="total">
-					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+				<a href="${pageContext.request.contextPath}/cart/checkout">
+					<div class="total" id="tongtien_head">
+						${sessionScope.cart.total()} (${sessionScope.cart.countItem()} Sản Phẩm)</div>
 					<img src="${pageContext.request.contextPath}/resources/customer_user/images/bag.png" alt="" />
 				</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+				<p><a href="javascript:;" class="simpleCart_empty">Giỏ Hàng</a></p>
 				<div class="clearfix"> </div>
 			</div>	
 			<div class="clearfix"> </div>

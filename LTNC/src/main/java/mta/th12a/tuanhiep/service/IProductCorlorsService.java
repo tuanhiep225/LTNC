@@ -10,4 +10,5 @@ public interface IProductCorlorsService {
 	public void delete (int id);
 	public ProductColors getByID(int id);
 	public List<ProductColors> getAll();
+	public List<ProductColors> getByIdProduct(int id);
 }

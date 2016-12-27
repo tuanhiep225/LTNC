@@ -42,4 +42,11 @@ public class ProductCorlorsServiceImpl implements IProductCorlorsService {
 		productColorDao.update(entity);
 		
 	}
+	@Transactional
+	@Override
+	public List<ProductColors> getByIdProduct(int id)
+	{
+		return productColorDao.getByIdProduct(id);
+		
+	}
 }

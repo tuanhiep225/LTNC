@@ -22,6 +22,7 @@ public class ProductColors  implements java.io.Serializable {
 
      private int productColorId;
      private String productColorName;
+     private String productColorCss;
      private Boolean isActive;
 
     public ProductColors() {
@@ -31,9 +32,10 @@ public class ProductColors  implements java.io.Serializable {
     public ProductColors(int productColorId) {
         this.productColorId = productColorId;
     }
-    public ProductColors(int productColorId, String productColorName, Boolean isActive) {
+    public ProductColors(int productColorId, String productColorName,String productColorCss, Boolean isActive) {
        this.productColorId = productColorId;
        this.productColorName = productColorName;
+       this.productColorCss=productColorCss;
        this.isActive = isActive;
     }
    
@@ -68,6 +70,16 @@ public class ProductColors  implements java.io.Serializable {
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
+
+    @Column(name="Product_Color_Css", length=50)
+	public String getProductColorCss() {
+		return productColorCss;
+	}
+
+
+	public void setProductColorCss(String productColorCss) {
+		this.productColorCss = productColorCss;
+	}
 
 
 

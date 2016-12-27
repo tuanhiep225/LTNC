@@ -42,4 +42,9 @@ public class ProductSizesServiceImpl implements IProductSizesService{
 		productSizeDao.update(entity);
 		
 	}
+	@Transactional
+	@Override
+	public List<ProductSizes> getByIdProduct(int id) {
+		return productSizeDao.getByIdProduct(id);
+	}
 }

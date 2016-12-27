@@ -39,21 +39,26 @@ public class ProductStores  implements java.io.Serializable {
     public ProductStores(int productStoreId) {
         this.productStoreId = productStoreId;
     }
-    public ProductStores(int productStoreId, Integer productId, Integer productColorId, Integer productSizeId, Integer quantity, Double purchasePrice, Double price, Double sale, String dayTrading, String note, Boolean isActive) {
-       this.productStoreId = productStoreId;
-       this.productId = productId;
-       this.productColorId = productColorId;
-       this.productSizeId = productSizeId;
-       this.quantity = quantity;
-       this.purchasePrice = purchasePrice;
-       this.price = price;
-       this.sale = sale;
-       this.dayTrading = dayTrading;
-       this.note = note;
-       this.isActive = isActive;
-    }
+
    
-     @Id 
+     public ProductStores(int productStoreId, Integer productId, Integer productColorId, Integer productSizeId,
+			Integer quantity, Double purchasePrice, Double price, Double sale, String dayTrading, String note,
+			Boolean isActive) {
+		this.productStoreId = productStoreId;
+		this.productId = productId;
+		this.productColorId = productColorId;
+		this.productSizeId = productSizeId;
+		this.quantity = quantity;
+		this.purchasePrice = purchasePrice;
+		this.price = price;
+		this.sale = sale;
+		this.dayTrading = dayTrading;
+		this.note = note;
+		this.isActive = isActive;
+	}
+
+
+	@Id 
 
      @GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
     @Column(name="Product_Store_ID", unique=true, nullable=false)

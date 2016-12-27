@@ -39,4 +39,10 @@ public class ProductsStoresServiceImpl implements IProductsStoresService {
 	public void update(ProductStores entity) {
 		productStoreDao.update(entity);		
 	}
+	@Transactional
+	@Override
+	public ProductStores FindByColorAndSize(int productId, int colorId, int sizeId) {
+		// TODO Auto-generated method stub
+		return productStoreDao.FindByColorAndSize(productId, colorId, sizeId);
+	}
 }

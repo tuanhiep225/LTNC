@@ -10,4 +10,5 @@ public interface IProductSizesService {
 	public void delete (int id);
 	public ProductSizes getByID(int id);
 	public List<ProductSizes> getAll();
+	public List<ProductSizes> getByIdProduct(int id);
 }

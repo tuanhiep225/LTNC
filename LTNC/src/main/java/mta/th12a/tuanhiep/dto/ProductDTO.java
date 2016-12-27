@@ -1,4 +1,10 @@
 package mta.th12a.tuanhiep.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import mta.th12a.tuanhiep.model.ProductStores;
+
 public class ProductDTO {
 	int productId;
 	String productName;
@@ -7,10 +13,12 @@ public class ProductDTO {
 	String productImage;
 	Integer categoryId;
 	String categoryName;
+	List<ProductStores> listProductStores;
 	public ProductDTO() {
+		listProductStores=new ArrayList<>();
 	}
 	public ProductDTO(int productId, String productName, String brandName, Integer brandId, String productImage,
-			Integer categoryId, String categoryName) {
+			Integer categoryId, String categoryName, List<ProductStores> listProductStores) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -19,6 +27,7 @@ public class ProductDTO {
 		this.productImage = productImage;
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
+		this.listProductStores = listProductStores;
 	}
 	public int getProductId() {
 		return productId;
@@ -61,5 +70,11 @@ public class ProductDTO {
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	public List<ProductStores> getListProductStores() {
+		return listProductStores;
+	}
+	public void setListProductStores(List<ProductStores> listProductStores) {
+		this.listProductStores = listProductStores;
 	}
 }
