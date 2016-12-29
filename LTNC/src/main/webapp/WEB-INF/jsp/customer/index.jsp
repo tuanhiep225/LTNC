@@ -1,3 +1,7 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- banner -->
@@ -796,17 +800,8 @@
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="${pageContext.request.contextPath}/resources/customer_user/images/39.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
-										<h4>a good look women's Long Skirt</h4>
-										<p>Ut enim ad minim veniam, quis nostrud 
-											exercitation ullamco laboris nisi ut aliquip ex ea 
-											commodo consequat.Duis aute irure dolor in 
-											reprehenderit in voluptate velit esse cillum dolore 
-											eu fugiat nulla pariatur. Excepteur sint occaecat 
-											cupidatat non proident, sunt in culpa qui officia 
-											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
 												<img src="${pageContext.request.contextPath}/resources/customer_user/images/star-.png" alt=" " class="img-responsive" />
@@ -825,18 +820,19 @@
 											</div>
 											<div class="clearfix"> </div>
 										</div>
-										<div class="modal_body_right_cart simpleCart_shelfItem">
-											<p><span>$320</span> <i class="item_price">$250</i></p>
-											<p><a class="item_add" href="#">Add to cart</a></p>
-										</div>
-										<h5>Color</h5>
-										<div class="color-quality">
-											<ul>
-												<li><a href="#"><span></span>Red</a></li>
-												<li><a href="#" class="brown"><span></span>Yellow</a></li>
-												<li><a href="#" class="purple"><span></span>Purple</a></li>
-												<li><a href="#" class="gray"><span></span>Violet</a></li>
-											</ul>
+										<h5>Kích Thước</h5>
+											<div class="kichthuoc">
+												<ul>
+												</ul>
+											</div>
+											<h5>Color</h5>
+											<div class="color-quality">
+												<ul>
+												</ul>
+											</div>
+											<div class="modal_body_right_cart simpleCart_shelfItem">
+											<p><span>$320</span> <i class="item_price">$0</i></p>
+											<p><a class="item_add" href="#">Thêm vào giỏ hàng</a></p>
 										</div>
 									</div>
 									<div class="clearfix"> </div>
@@ -845,6 +841,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -944,115 +941,124 @@
 <!-- new-products -->
 	<div class="new-products">
 		<div class="container">
-			<h3>New Products</h3>
+			<h3>Sản Phẩm Mới</h3>
 			<div class="agileinfo_new_products_grids">
+			<c:forEach items="${listNew}" var="item">
 				<div class="col-md-3 agileinfo_new_products_grid">
 					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
 						<div class="hs-wrapper hs-wrapper1">
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/27.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/28.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/29.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/27.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/28.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/29.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/30.jpg" alt=" " class="img-responsive" />
+							<img src="${pageContext.request.contextPath}/resources/customer_user/images/${item.productImage}" alt=" " class="img-responsive" />
 							<div class="w3_hs_bottom w3_hs_bottom_sub">
 								<ul>
 									<li>
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" data-id="${item.productId}" data-img="${item.productImage}" aria-hidden="true"></span></a>
 									</li>
 								</ul>
 							</div>
 						</div>
-						<h5><a href="single.html">Skirts</a></h5>
+						<h5><a href="single.html">${item.productName}</a></h5>
 						<div class="simpleCart_shelfItem">
-							<p><span>$320</span> <i class="item_price">$250</i></p>
-							<p><a class="item_add" href="#">Add to cart</a></p>
+							<p><span>$320</span> <i class="item_price">$0</i></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 agileinfo_new_products_grid">
-					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-						<div class="hs-wrapper hs-wrapper1">
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/31.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/32.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/33.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/34.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/31.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/32.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/33.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/34.jpg" alt=" " class="img-responsive" />
-							<div class="w3_hs_bottom w3_hs_bottom_sub">
-								<ul>
-									<li>
-										<a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<h5><a href="single.html">Jackets</a></h5>
-						<div class="simpleCart_shelfItem">
-							<p><span>$320</span> <i class="item_price">$250</i></p>
-							<p><a class="item_add" href="#">Add to cart</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 agileinfo_new_products_grid">
-					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-						<div class="hs-wrapper hs-wrapper1">
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/37.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/36.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/38.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/37.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/36.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/38.jpg" alt=" " class="img-responsive" />
-							<div class="w3_hs_bottom w3_hs_bottom_sub">
-								<ul>
-									<li>
-										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<h5><a href="single.html">Dresses</a></h5>
-						<div class="simpleCart_shelfItem">
-							<p><span>$320</span> <i class="item_price">$250</i></p>
-							<p><a class="item_add" href="#">Add to cart</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 agileinfo_new_products_grid">
-					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-						<div class="hs-wrapper hs-wrapper1">
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/40.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/41.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/42.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/43.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/40.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/41.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/42.jpg" alt=" " class="img-responsive" />
-							<img src="${pageContext.request.contextPath}/resources/customer_user/images/43.jpg" alt=" " class="img-responsive" />
-							<div class="w3_hs_bottom w3_hs_bottom_sub">
-								<ul>
-									<li>
-										<a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<h5><a href="single.html">Jeans</a></h5>
-						<div class="simpleCart_shelfItem">
-							<p><span>$320</span> <i class="item_price">$250</i></p>
-							<p><a class="item_add" href="#">Add to cart</a></p>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 				<div class="clearfix"> </div>
 			</div>
+			<script>
+					$('.glyphicon-eye-open').click(function(){
+						debugger
+						var id=$(this).data('id');
+						var img=$(this).data('img');
+						$('.modal_body_left').html('<img src="${pageContext.request.contextPath}/resources/customer_user/images/'+img+'" alt=" " class="img-responsive" />')
+						$('.item_add').attr('data-id',id);
+						$('.kichthuoc ul').html('');
+						$('.color-quality ul').html('');
+						$.ajax({
+							url:"/LTNC/cart/getlistcolor",
+							type:'POST',
+							dataType:'json',
+							data:{
+								id:id
+							},
+							success:function(list)
+							{
+								debugger;
+								for(var i=0;i<list.length;i++)
+								{
+									
+									if($('.color-quality ul').find('.'+list[i].productColorCss).length==0)
+									$('.color-quality ul').append('<li><a href="#" class="'+list[i].productColorCss+'"><input name="mausac" type="radio" value="'+list[i].productColorId+'"/>'+list[i].productColorName+'</a></li>')
+								}
+							}
+						})
+						
+						$.ajax({
+							url:"/LTNC/cart/getlistsize",
+							type:'POST',
+							dataType:'json',
+							data:{
+								id:id
+							},
+							success:function(list)
+							{
+								for(var i=0;i<list.length;i++)
+								{
+									if($('.kichthuoc ul').find('.kichthuoc'+list[i].productSizeId).length==0)
+									$('.kichthuoc ul').append('<li><a href="#" class="kichthuoc'+list[i].productSizeId+'"><span>'+list[i].productSizeName+'</span><input name="kichthuoc" type="radio" value="'+list[i].productSizeId+'" style="margin-left:5px;"/></a></li>')
+								}
+								
+							}
+						})
+					});
+					$('.item_add').click(function(){
+						undefined
+						var kichthuoc= parseInt($('input[name=kichthuoc]:checked', '.kichthuoc').val());
+						var mausac=parseInt($('input[name=mausac]:checked', '.color-quality').val());
+						var id=$(this).data('id');
+						if(typeof kichthuoc=='NaN'||typeof mausac=='NaN')
+						{
+							if($('.simpleCart_shelfItem').find('.error-mgs').length==0)
+							$('.simpleCart_shelfItem').append('<div class="error-mgs" style="color:red">Vui lòng chọn đầy đủ kích thước và màu sắc !</div>')
+						}
+						else
+							{
+							debugger
+								$.ajax({
+									url:"/LTNC/cart/insert",
+									type:'POST',
+									dataType:'json',
+									data:{
+										productId:id,
+										sizeId:kichthuoc,
+										colorId:mausac,
+										soLuong:1
+									},
+									success:function(response)
+									{
+										debugger
+										if(response.status==1)
+											{
+											debugger
+												$('#tongtien_head').html(response.total+' ('+response.count+' Sản Phẩm)')
+												if($('.simpleCart_shelfItem').find('.error-mgs').length>0)
+													$('.error-mgs').remove();
+												$('#myModal6').modal('hide');
+											}
+										else
+											{
+											if($('.simpleCart_shelfItem').find('.error-mgs').length==0)
+												$('.simpleCart_shelfItem').append('<div class="error-mgs" style="color:red">Kích thước hoặc Màu sắc này đã hết, vui lòng chọn lại !</div>');
+											else
+												$('.error-mgs').html('Kích thước hoặc Màu sắc này đã hết, vui lòng chọn lại !')
+											}
+									}
+								})
+							}
+					});
+					</script>
 		</div>
+		
 	</div>
 <!-- //new-products -->
 <!-- top-brands -->

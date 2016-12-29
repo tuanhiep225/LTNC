@@ -139,7 +139,7 @@
 					<div>Tổng tiền : <%=cart.total() %> VNĐ</div>
 				</div>
 				<div class="checkout-right-basket">
-					<a href="products.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Tiếp Tục Mua Hàng</a>
+					<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Tiếp Tục Mua Hàng</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>

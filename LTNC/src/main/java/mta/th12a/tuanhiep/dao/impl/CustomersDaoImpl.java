@@ -15,8 +15,9 @@ public class CustomersDaoImpl implements ICustomersDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Override
-	public void add(Customers customer) {
-		sessionFactory.getCurrentSession().save(customer);
+	public int add(Customers customer) {
+		int id=(int) sessionFactory.getCurrentSession().save(customer);
+		return id;
 		
 	}@Override
 	public void delete(int id) {

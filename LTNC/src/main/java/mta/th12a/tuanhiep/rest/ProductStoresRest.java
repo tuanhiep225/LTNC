@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import antlr.collections.List;
 import mta.th12a.tuanhiep.dto.ModelDTO;
 import mta.th12a.tuanhiep.dto.Result;
 import mta.th12a.tuanhiep.model.Brands;
@@ -22,6 +23,7 @@ import mta.th12a.tuanhiep.service.IBrandsService;
 import mta.th12a.tuanhiep.service.IProductsStoresService;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 @RestController
 @RequestMapping(value="/api/product-store")
 public class ProductStoresRest {
@@ -31,8 +33,9 @@ public class ProductStoresRest {
 	public ModelDTO<ProductStores> getAll()
 	{
 		ModelDTO<ProductStores> dto=new ModelDTO<ProductStores>();
-		dto.setData(productStoreService.getAll());
-		dto.setItemCount(productStoreService.getAll().size());
+		ArrayList<ProductStores> list=(ArrayList<ProductStores>) productStoreService.getAll();
+		dto.setData(list);
+		dto.setItemCount(list.size());
 		return dto;
 	}
 	

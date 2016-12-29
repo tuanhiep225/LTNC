@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import mta.th12a.tuanhiep.dao.IOrdersDao;
+import mta.th12a.tuanhiep.dto.Cart;
 import mta.th12a.tuanhiep.model.Orders;
 import mta.th12a.tuanhiep.service.IOrdersService;
 
@@ -40,6 +41,12 @@ public class OrdersServiceImpl implements IOrdersService {
 	@Override
 	public void update(Orders entity) {
 		orderDao.update(entity);
+		
+	}
+	@Transactional
+	@Override
+	public void insertOrder(String customerId, String name, String email, String sdt, String diaChi, Cart cart) {
+		orderDao.insertOrder(customerId, name, email, sdt, diaChi, cart);
 		
 	}
 }

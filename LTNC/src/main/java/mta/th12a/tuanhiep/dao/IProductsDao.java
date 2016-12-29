@@ -12,4 +12,5 @@ public interface IProductsDao {
 	public Products getByID(int id);
 	public List<Products> getAll();
 	public List<ProductDTO> getListByCategoryID(int ID);
+	public List<ProductDTO> getListNew();
 }

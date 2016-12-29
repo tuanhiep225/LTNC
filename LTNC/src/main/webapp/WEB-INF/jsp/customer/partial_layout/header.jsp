@@ -48,7 +48,6 @@
 													type:'POST',
 													success:function(e)
 													{
-														debugger
 														if(e!=null)
 															{
 															var a= $('.tab-1').find('.thongbao').length;
@@ -58,7 +57,7 @@
 																}
 															$('.nameCustomer').html(e.customer.name);
 															$('#myModal88').modal('hide');
-															
+															location.reload();
 															}
 														
 														else
@@ -185,7 +184,7 @@
 										<ul class="multi-column-dropdown">
 											<h6>${item.parentCategory.categoryName }</h6>
 											<c:forEach items="${item.childCategory }" var="subItem">
-											<li><a href="dresses.html">${subItem.categoryName}</a></li>
+											<li><a href="${pageContext.request.contextPath}/product/${subItem.categoryId}">${subItem.categoryName}</a></li>
 											</c:forEach>
 										</ul>
 									</div>

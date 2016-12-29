@@ -84,6 +84,9 @@
 	<definition name="checkout" extends="customerlayout">
 	    <put-attribute name="homecontent" value="/WEB-INF/jsp/customer/checkout.jsp" />
 	</definition>
+	<definition name="order" extends="customerlayout">
+	    <put-attribute name="homecontent" value="/WEB-INF/jsp/customer/order.jsp" />
+	</definition>
 	<!-- ERROR PAGE -->
 	<definition name="custom-error" template="/WEB-INF/views/custom-error.jsp" >
 	</definition>

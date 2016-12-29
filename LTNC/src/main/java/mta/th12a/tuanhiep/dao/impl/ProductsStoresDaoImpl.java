@@ -25,8 +25,13 @@ public class ProductsStoresDaoImpl implements IProductsStoresDao {
 		update(entity);	
 	}@SuppressWarnings("unchecked")
 	@Override
-	public List<ProductStores> getAll() {		
-		return sessionFactory.getCurrentSession().createQuery("from ProductStores where IsActive=1").list();
+	public List<ProductStores> getAll() {	
+		String sql="select * from Product_stores where IsActive=1";
+		SQLQuery query=sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.addEntity(ProductStores.class);
+		List<ProductStores> list=query.list();
+		return list;
+		//return sessionFactory.getCurrentSession().createQuery("from ProductStores where IsActive=1").list();
 	}@Override
 	public ProductStores getByID(int id) {
 		

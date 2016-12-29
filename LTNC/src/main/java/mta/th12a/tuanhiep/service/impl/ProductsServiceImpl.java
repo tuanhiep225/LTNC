@@ -48,4 +48,10 @@ public class ProductsServiceImpl implements IProductsService{
 	public List<ProductDTO> getListByCategoryID(int ID) {
 		return productDao.getListByCategoryID(ID);
 	}
+	@Transactional
+	@Override
+	public List<ProductDTO> getListNew() {
+		// TODO Auto-generated method stub
+		return productDao.getListNew();
+	}
 }

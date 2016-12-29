@@ -16,5 +16,6 @@
         <mapping class="mta.th12a.tuanhiep.model.Products" />
         <mapping class="mta.th12a.tuanhiep.model.ProductStores" />
         <mapping class="mta.th12a.tuanhiep.dto.ProductStoreDTO" />
+        <mapping class="mta.th12a.tuanhiep.model.ProductStoresObjec" />
     </session-factory>         
 </hibernate-configuration>

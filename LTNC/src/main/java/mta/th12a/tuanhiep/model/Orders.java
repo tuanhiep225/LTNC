@@ -21,7 +21,6 @@ public class Orders  implements java.io.Serializable {
 
 
      private int orderId;
-     private Integer orderDetailId;
      private Integer customerId;
      private String customerName;
      private String customerAddress;
@@ -37,9 +36,8 @@ public class Orders  implements java.io.Serializable {
     public Orders(int orderId) {
         this.orderId = orderId;
     }
-    public Orders(int orderId, Integer orderDetailId, Integer customerId, String customerName, String customerAddress, String customerPhone, String customerEmail, Integer status, Boolean isActive) {
+    public Orders(int orderId, Integer customerId, String customerName, String customerAddress, String customerPhone, String customerEmail, Integer status, Boolean isActive) {
        this.orderId = orderId;
-       this.orderDetailId = orderDetailId;
        this.customerId = customerId;
        this.customerName = customerName;
        this.customerAddress = customerAddress;
@@ -60,17 +58,6 @@ public class Orders  implements java.io.Serializable {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-
-    
-    @Column(name="Order_Detail_ID")
-    public Integer getOrderDetailId() {
-        return this.orderDetailId;
-    }
-    
-    public void setOrderDetailId(Integer orderDetailId) {
-        this.orderDetailId = orderDetailId;
-    }
-
     
     @Column(name="Customer_ID")
     public Integer getCustomerId() {

@@ -70,4 +70,29 @@ public class ProductsDaoImpl implements IProductsDao {
 		}
 		return listProductDTO;
 	}
+	@Override
+	public List<ProductDTO> getListNew()
+	{
+		ArrayList<ProductDTO> listProductDTO=new ArrayList<ProductDTO>();
+		String sql="select top 4 a.*,b.Brand_Name,c.Category_Name from PRODUCTS a,CATEGORIES c,BRANDS b "
+				+ "where a.Brand_ID=b.Brand_ID and a.Category_ID=c.Category_ID and a.IsActive=1 and "
+				+ "b.IsActive=1 and c.IsActive=1 order by a.Product_ID desc";
+		SQLQuery query=sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+		List result=query.list();
+		for(Object object:result)
+		{
+			ProductDTO dto=new ProductDTO();
+			Map row = (Map)object;
+			dto.setBrandId((Integer)row.get("Product_ID"));
+			dto.setBrandName((String)row.get("Brand_Name"));
+			dto.setCategoryId((Integer) row.get("Category_ID"));
+			dto.setCategoryName((String) row.get("Category_Name"));
+			dto.setProductId((Integer)row.get("Product_ID"));
+			dto.setProductImage((String) row.get("Product_Image"));
+			dto.setProductName((String) row.get("Product_Name"));
+			listProductDTO.add(dto);
+		}
+		return listProductDTO;
+	}
 }

@@ -16,8 +16,8 @@ public class CustomersServiceImpl implements ICustomersService{
 	private ICustomersDao customerDao;
 	@Transactional
 	@Override
-	public void add(Customers entity) {
-		customerDao.add(entity);
+	public int add(Customers entity) {
+		return customerDao.add(entity);
 		
 	}
 	@Transactional
