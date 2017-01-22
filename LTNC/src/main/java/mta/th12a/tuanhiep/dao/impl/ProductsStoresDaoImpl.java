@@ -11,6 +11,7 @@ import mta.th12a.tuanhiep.dao.IProductsStoresDao;
 import mta.th12a.tuanhiep.dto.ProductStoreDTO;
 import mta.th12a.tuanhiep.model.ProductSizes;
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 @Repository
 public class ProductsStoresDaoImpl implements IProductsStoresDao {
 	@Autowired
@@ -26,11 +27,11 @@ public class ProductsStoresDaoImpl implements IProductsStoresDao {
 	}@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductStores> getAll() {	
-		String sql="select * from Product_stores where IsActive=1";
+		/*String sql="select * from Product_stores where IsActive=1";
 		SQLQuery query=sessionFactory.getCurrentSession().createSQLQuery(sql);
 		query.addEntity(ProductStores.class);
-		List<ProductStores> list=query.list();
-		return list;
+		List<ProductStores> list=query.list();*/
+		return sessionFactory.getCurrentSession().createQuery("from ProductStores where IsActive=1").list();
 		//return sessionFactory.getCurrentSession().createQuery("from ProductStores where IsActive=1").list();
 	}@Override
 	public ProductStores getByID(int id) {
@@ -42,7 +43,7 @@ public class ProductsStoresDaoImpl implements IProductsStoresDao {
 		
 	}
 	@Override
-	public ProductStores FindByColorAndSize(int productId, int colorId, int sizeId) {
+	public ProductStoresObjec FindByColorAndSize(int productId, int colorId, int sizeId) {
 		String sql="select a.*,b.Product_Color_Name,c.Product_Size_Name,d.Product_Name,d.Product_Image from Product_Stores as a "
 				+ "join Product_Colors as b "
 				+ "on a.Product_Color_ID=b.Product_Color_ID "

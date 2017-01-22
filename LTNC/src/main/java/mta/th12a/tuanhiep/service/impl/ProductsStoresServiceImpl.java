@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mta.th12a.tuanhiep.dao.IProductsStoresDao;
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 import mta.th12a.tuanhiep.service.IProductsStoresService;
 @Service
 public class ProductsStoresServiceImpl implements IProductsStoresService {
@@ -41,7 +42,7 @@ public class ProductsStoresServiceImpl implements IProductsStoresService {
 	}
 	@Transactional
 	@Override
-	public ProductStores FindByColorAndSize(int productId, int colorId, int sizeId) {
+	public ProductStoresObjec FindByColorAndSize(int productId, int colorId, int sizeId) {
 		// TODO Auto-generated method stub
 		return productStoreDao.FindByColorAndSize(productId, colorId, sizeId);
 	}

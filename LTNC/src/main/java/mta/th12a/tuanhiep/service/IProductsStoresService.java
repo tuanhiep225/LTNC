@@ -4,6 +4,7 @@ import java.util.List;
 
 import mta.th12a.tuanhiep.dto.ProductDTO;
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 
 public interface IProductsStoresService {
 	public void add(ProductStores entity);
@@ -11,5 +12,5 @@ public interface IProductsStoresService {
 	public void delete (int id);
 	public ProductStores getByID(int id);
 	public List<ProductStores> getAll();
-	public ProductStores FindByColorAndSize(int productId,int colorId,int sizeId);
+	public ProductStoresObjec FindByColorAndSize(int productId,int colorId,int sizeId);
 }

@@ -1,7 +1,8 @@
 package mta.th12a.tuanhiep.dto;
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 public class ItemDTO {
-	private ProductStores product;
+	private ProductStoresObjec product;
 	private int quantity;
 	public ItemDTO() {
 	}
@@ -9,7 +10,7 @@ public class ItemDTO {
 		this.product = product;
 		this.quantity = quantity;
 	}
-	public ProductStores getProduct() {
+	public ProductStoresObjec getProduct() {
 		return product;
 	}
 	public void setProduct(ProductStores product) {

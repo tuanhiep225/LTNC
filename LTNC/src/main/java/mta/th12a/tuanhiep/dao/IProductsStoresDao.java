@@ -3,6 +3,7 @@ package mta.th12a.tuanhiep.dao;
 import java.util.List;
 
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 
 public interface IProductsStoresDao {
 	public void add(ProductStores entity);
@@ -10,5 +11,5 @@ public interface IProductsStoresDao {
 	public void delete (int id);
 	public ProductStores getByID(int id);
 	public List<ProductStores> getAll();
-	public ProductStores FindByColorAndSize(int productId,int colorId,int sizeId);
+	public ProductStoresObjec FindByColorAndSize(int productId,int colorId,int sizeId);
 }

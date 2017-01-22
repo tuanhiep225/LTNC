@@ -38,7 +38,7 @@ public class CartController extends BaseController {
 		double status=0;
 		double total=0;
 		double count=0;
-		ProductStores sp=productStore.FindByColorAndSize(productId, colorId, sizeId);
+		ProductStores sp=(ProductStores) productStore.FindByColorAndSize(productId, colorId, sizeId);
 		if(sp!=null)
 		{
 			if(session.getAttribute("cart")!=null){

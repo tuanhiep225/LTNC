@@ -4,9 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import mta.th12a.tuanhiep.model.ProductStores;
+import mta.th12a.tuanhiep.model.ProductStoresObjec;
 
 @Entity
-public class ProductStoreDTO extends ProductStores{
+public class ProductStoreDTO extends ProductStoresObjec{
 	private String productName;
     private String productColorName;
     private String productSizeName;
